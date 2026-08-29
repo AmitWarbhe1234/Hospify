@@ -45,7 +45,8 @@ class StaffCreateSerializer(serializers.Serializer):
     department = serializers.ChoiceField(
         choices=User.Department.choices,
         required=False,
-        allow_blank=True
+        allow_blank=True,
+        allow_null=True
     )
 
     def validate_email(self, value):
