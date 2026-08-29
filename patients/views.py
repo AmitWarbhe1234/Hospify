@@ -62,10 +62,13 @@ class PatientRegistrationView(APIView):
             address=data.get("address", "")
         )
 
-        send_patient_activation_email.delay(
-        user.id,
-        activation_token
-    )
+        try:
+            send_patient_activation_email.delay(
+                user.id,
+                activation_token
+            )
+        except Exception as e:
+            print(f"Failed to send activation email: {e}")
         
         return Response(
             {
