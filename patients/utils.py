@@ -1,4 +1,4 @@
-from django.core.mail import send_mail
+import requests
 from django.conf import settings
 
 
@@ -14,21 +14,29 @@ def send_activation_email(user, activation_token):
 
     subject = "Activate your Hospify account"
 
-    message = f"""
-Hi {user.first_name},
+    html_content = f"""
+    <p>Hi {user.first_name},</p>
+    <p>Your account has been registered. Please click the link below to activate it:</p>
+    <p><a href="{activation_link}">{activation_link}</a></p>
+    <p>Regards,<br>Hospify Team</p>
+    """
 
-Your account has been registered. Please click the link below to activate it:
+    url = "https://api.brevo.com/v3/smtp/email"
 
-{activation_link}
+    headers = {
+        "accept": "application/json",
+        "api-key": settings.BREVO_API_KEY,
+        "content-type": "application/json",
+    }
 
-Regards,
-Hospify Team
-"""
+    payload = {
+        "sender": {"email": settings.DEFAULT_FROM_EMAIL, "name": "Hospify Team"},
+        "to": [{"email": user.email}],
+        "subject": subject,
+        "htmlContent": html_content,
+    }
 
-    send_mail(
-        subject,
-        message,
-        settings.DEFAULT_FROM_EMAIL,
-        [user.email],
-        fail_silently=False,
-    )
+    response = requests.post(url, json=payload, headers=headers, timeout=15)
+
+    if response.status_code not in (200, 201):
+        raise Exception(f"Brevo API error: {response.status_code} - {response.text}")
