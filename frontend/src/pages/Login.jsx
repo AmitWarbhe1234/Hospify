@@ -21,48 +21,86 @@ function HospifyLogo() {
         aria-label="Hospify Logo"
         role="img"
       >
-        {/* LEFT PERSON HEAD (teal) */}
-        <circle cx="70" cy="26" r="14" fill="#22C1D6" />
+        <defs>
+          <linearGradient id="personBlue" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#19D3E6" />
+            <stop offset="100%" stopColor="#06B6D4" />
+          </linearGradient>
 
-        {/* RIGHT PERSON HEAD (green) */}
-        <circle cx="150" cy="26" r="14" fill="#8DD139" />
+          <linearGradient id="personGreen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#A8E63A" />
+            <stop offset="100%" stopColor="#84CC16" />
+          </linearGradient>
 
-        {/* LEFT HEART LOBE (teal, filled) */}
+          <linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#17D5E7" />
+            <stop offset="50%" stopColor="#2CB9F4" />
+            <stop offset="100%" stopColor="#9BE52D" />
+          </linearGradient>
+        </defs>
+
+        {/* LEFT PERSON HEAD */}
+        <circle cx="63" cy="27" r="16" fill="url(#personBlue)" />
+
+        {/* LEFT PERSON BODY */}
         <path
-          d="M110 138
-             C78 112, 54 88, 54 60
-             C54 38, 74 26, 95 33
-             C104 36, 110 46, 110 60
-             Z"
-          fill="#22C1D6"
-        />
-
-        {/* RIGHT HEART LOBE (green, filled) */}
-        <path
-          d="M110 138
-             C142 112, 166 88, 166 60
-             C166 38, 146 26, 125 33
-             C116 36, 110 46, 110 60
-             Z"
-          fill="#8DD139"
-        />
-
-        {/* WHITE CIRCLE BEHIND CROSS */}
-        <circle cx="110" cy="70" r="28" fill="#FFFFFF" />
-
-        {/* HEARTBEAT PULSE LINE */}
-        <polyline
-          points="86,70 97,70 102,57 109,84 115,64 121,70 134,70"
+          d="M40 88
+             C39 61 48 45 64 45
+             C80 45 91 59 91 83"
           fill="none"
-          stroke="#22C1D6"
-          strokeWidth="4"
+          stroke="url(#personBlue)"
+          strokeWidth="15"
           strokeLinecap="round"
+        />
+
+        {/* RIGHT PERSON HEAD */}
+        <circle cx="157" cy="27" r="16" fill="url(#personGreen)" />
+
+        {/* RIGHT PERSON BODY */}
+        <path
+          d="M129 83
+             C129 59 140 45 156 45
+             C172 45 181 62 180 89"
+          fill="none"
+          stroke="url(#personGreen)"
+          strokeWidth="15"
+          strokeLinecap="round"
+        />
+
+        {/* HEART */}
+        <path
+          d="M110 119
+             C104 112 74 91 74 67
+             C74 52 84 42 97 42
+             C105 42 111 46 110 57
+             C112 46 118 42 127 42
+             C140 42 148 52 148 67
+             C148 91 117 113 110 119Z"
+          fill="url(#heartGradient)"
+          stroke="#FFFFFF"
+          strokeWidth="5"
           strokeLinejoin="round"
         />
 
         {/* MEDICAL CROSS */}
-        <rect x="103" y="57" width="14" height="28" rx="2" fill="#22C1D6" />
-        <rect x="96" y="64" width="28" height="14" rx="2" fill="#22C1D6" />
+        <rect x="100" y="58" width="20" height="47" rx="2" fill="#FFFFFF" />
+        <rect x="86" y="72" width="48" height="20" rx="2" fill="#FFFFFF" />
+
+        {/* ECG */}
+        <path
+          d="M86 82
+             H97
+             L102 70
+             L108 94
+             L115 61
+             L121 82
+             H136"
+          fill="none"
+          stroke="#3157E8"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
 
       <div className="hospify-logo-name">
