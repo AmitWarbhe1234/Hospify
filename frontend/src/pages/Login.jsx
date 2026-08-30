@@ -21,129 +21,56 @@ function HospifyLogo() {
         aria-label="Hospify Logo"
         role="img"
       >
-        <defs>
-          <linearGradient
-            id="personBlue"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1"
-          >
-            <stop offset="0%" stopColor="#19D3E6" />
-            <stop offset="100%" stopColor="#06B6D4" />
-          </linearGradient>
+        {/* LEFT PERSON HEAD (teal) */}
+        <circle cx="72" cy="30" r="15" fill="#22C1D6" />
 
-          <linearGradient
-            id="personGreen"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1"
-          >
-            <stop offset="0%" stopColor="#A8E63A" />
-            <stop offset="100%" stopColor="#84CC16" />
-          </linearGradient>
+        {/* RIGHT PERSON HEAD (green) */}
+        <circle cx="148" cy="30" r="15" fill="#8DD139" />
 
-          <linearGradient
-            id="heartGradient"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1"
-          >
-            <stop offset="0%" stopColor="#17D5E7" />
-            <stop offset="50%" stopColor="#2CB9F4" />
-            <stop offset="100%" stopColor="#9BE52D" />
-          </linearGradient>
-        </defs>
-
-        {/* LEFT PERSON HEAD */}
-        <circle
-          cx="63"
-          cy="27"
-          r="16"
-          fill="url(#personBlue)"
-        />
-
-        {/* LEFT PERSON BODY */}
+        {/* LEFT HEART HALF (teal) */}
         <path
-          d="M40 88
-             C39 61 48 45 64 45
-             C80 45 91 59 91 83"
+          d="M110 118
+             C104 111, 78 92, 74 68
+             C71 50, 82 38, 97 38
+             C104 38, 109 42, 110 52
+             L110 118 Z"
           fill="none"
-          stroke="url(#personBlue)"
-          strokeWidth="15"
+          stroke="#22C1D6"
+          strokeWidth="9"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
 
-        {/* RIGHT PERSON HEAD */}
-        <circle
-          cx="157"
-          cy="27"
-          r="16"
-          fill="url(#personGreen)"
-        />
-
-        {/* RIGHT PERSON BODY */}
+        {/* RIGHT HEART HALF (green) */}
         <path
-          d="M129 83
-             C129 59 140 45 156 45
-             C172 45 181 62 180 89"
+          d="M110 118
+             C116 111, 142 92, 146 68
+             C149 50, 138 38, 123 38
+             C116 38, 111 42, 110 52
+             L110 118 Z"
           fill="none"
-          stroke="url(#personGreen)"
-          strokeWidth="15"
+          stroke="#8DD139"
+          strokeWidth="9"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
 
-        {/* HEART */}
-        <path
-          d="M110 119
-             C104 112 74 91 74 67
-             C74 52 84 42 97 42
-             C105 42 111 46 110 57
-             C112 46 118 42 127 42
-             C140 42 148 52 148 67
-             C148 91 117 113 110 119Z"
-          fill="url(#heartGradient)"
-          stroke="#FFFFFF"
-          strokeWidth="5"
+        {/* WHITE CIRCLE BEHIND CROSS */}
+        <circle cx="110" cy="72" r="30" fill="#FFFFFF" />
+
+        {/* HEARTBEAT PULSE LINE */}
+        <polyline
+          points="84,72 96,72 101,58 108,86 114,66 120,72 136,72"
+          fill="none"
+          stroke="#22C1D6"
+          strokeWidth="4"
+          strokeLinecap="round"
           strokeLinejoin="round"
         />
 
         {/* MEDICAL CROSS */}
-        <rect
-          x="100"
-          y="58"
-          width="20"
-          height="47"
-          rx="2"
-          fill="#FFFFFF"
-        />
-
-        <rect
-          x="86"
-          y="72"
-          width="48"
-          height="20"
-          rx="2"
-          fill="#FFFFFF"
-        />
-
-        {/* ECG */}
-        <path
-          d="M86 82
-             H97
-             L102 70
-             L108 94
-             L115 61
-             L121 82
-             H136"
-          fill="none"
-          stroke="#3157E8"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <rect x="103" y="58" width="14" height="30" rx="2" fill="#22C1D6" />
+        <rect x="95" y="66" width="30" height="14" rx="2" fill="#22C1D6" />
       </svg>
 
       <div className="hospify-logo-name">
