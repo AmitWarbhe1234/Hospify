@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
-import { Hospital, Lock, Mail, ShieldCheck, AlertCircle } from "lucide-react";
-
+import {
+  HeartPulse,
+  Lock,
+  Mail,
+  ShieldCheck,
+  AlertCircle,
+} from "lucide-react";
 
 function Login() {
-
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -15,14 +19,12 @@ function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
-
     e.preventDefault();
 
     setError("");
     setLoading(true);
 
     try {
-
       const response = await API.post("/auth/login/", {
         email: email,
         password: password,
@@ -49,22 +51,16 @@ function Login() {
 
       if (role === "ADMIN") {
         navigate("/admin-dashboard");
-      }
-      else if (role === "DOCTOR") {
+      } else if (role === "DOCTOR") {
         navigate("/doctor-dashboard");
-      }
-      else if (role === "RECEPTIONIST") {
+      } else if (role === "RECEPTIONIST") {
         navigate("/receptionist-dashboard");
-      }
-      else if (role === "PATIENT") {
+      } else if (role === "PATIENT") {
         navigate("/patient-dashboard");
-      }
-      else if (role === "LAB_TECHNICIAN") {
+      } else if (role === "LAB_TECHNICIAN") {
         navigate("/lab-technician-dashboard");
       }
-
     } catch (error) {
-
       console.log(
         "Login Error:",
         error.response?.data
@@ -76,17 +72,12 @@ function Login() {
         "Invalid email or password. Please try again.";
 
       setError(errorMessage);
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
   return (
-
     <div className="login-page">
 
       {/* Background decorations */}
@@ -98,17 +89,32 @@ function Login() {
 
       <div className="login-wrapper">
 
-        {/* LEFT SIDE */}
+        {/* =========================================
+            LEFT SIDE
+        ========================================= */}
 
         <div className="login-intro">
 
+          {/* Premium Hospify Logo */}
+
           <div className="hospital-icon">
-            <Hospital size={28} />
+            <div className="hospital-logo">
+              <HeartPulse
+                size={34}
+                strokeWidth={2.5}
+              />
+            </div>
           </div>
+
+
+          {/* Brand */}
 
           <div className="login-brand">
             Hospify
           </div>
+
+
+          {/* Main Heading */}
 
           <h1>
             Your Health,
@@ -116,11 +122,17 @@ function Login() {
             <span>Our Priority.</span>
           </h1>
 
+
+          {/* Description */}
+
           <p>
             A smarter healthcare experience that
             connects patients, doctors and healthcare
             professionals in one place.
           </p>
+
+
+          {/* Features */}
 
           <div className="login-features">
 
@@ -144,7 +156,9 @@ function Login() {
         </div>
 
 
-        {/* LOGIN CARD */}
+        {/* =========================================
+            LOGIN CARD
+        ========================================= */}
 
         <div className="login-card">
 
@@ -165,17 +179,26 @@ function Login() {
           </div>
 
 
+          {/* ERROR MESSAGE */}
+
           {error && (
-              <div className="login-error">
-                <AlertCircle size={16} />
-                <span>{error}</span>
-              </div>
-            )}
+            <div className="login-error">
+
+              <AlertCircle size={16} />
+
+              <span>
+                {error}
+              </span>
+
+            </div>
+          )}
 
 
           <form onSubmit={handleLogin}>
 
-            {/* EMAIL */}
+            {/* =====================================
+                EMAIL
+            ===================================== */}
 
             <div className="login-field">
 
@@ -204,7 +227,9 @@ function Login() {
             </div>
 
 
-            {/* PASSWORD */}
+            {/* =====================================
+                PASSWORD
+            ===================================== */}
 
             <div className="login-field">
 
@@ -233,7 +258,9 @@ function Login() {
             </div>
 
 
-            {/* LOGIN BUTTON */}
+            {/* =====================================
+                LOGIN BUTTON
+            ===================================== */}
 
             <button
               type="submit"
@@ -242,23 +269,19 @@ function Login() {
             >
 
               {loading ? (
+                <>
+                  <span className="login-spinner"></span>
 
-                  <>
-                    <span className="login-spinner"></span>
-
-                    Signing in...
-
-                  </>
-
-                ) : (
-
+                  Signing in...
+                </>
+              ) : (
                 <>
                   Sign In
+
                   <span className="login-arrow">
                     →
                   </span>
                 </>
-
               )}
 
             </button>
@@ -266,10 +289,23 @@ function Login() {
           </form>
 
 
+          {/* =====================================
+              SECURITY MESSAGE
+          ===================================== */}
+
           <div className="login-security">
-            <ShieldCheck size={14} style={{ verticalAlign: "middle", marginRight: "5px" }} />
+
+            <ShieldCheck
+              size={14}
+              style={{
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+            />
+
             Your information is protected with
             secure authentication.
+
           </div>
 
         </div>
@@ -277,7 +313,6 @@ function Login() {
       </div>
 
     </div>
-
   );
 }
 
