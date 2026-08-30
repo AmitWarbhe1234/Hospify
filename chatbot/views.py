@@ -1,7 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from google import genai
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -23,20 +23,18 @@ class ChatbotAPIView(APIView):
                 status=400
             )
 
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("GEMINI_API_KEY")
 
         if not api_key:
             return Response(
-                {"error": "OpenAI API key is not configured."},
+                {"error": "Gemini API key is not configured."},
                 status=500
             )
 
         try:
-            client = OpenAI(api_key=api_key)
+            client = genai.Client(api_key=api_key)
 
-            response = client.responses.create(
-                model="gpt-4o-mini",
-                instructions="""
+            system_instructions = """
 You are Hospify Assistant, an AI healthcare assistant
 for the Hospify Healthcare Management System.
 
@@ -52,16 +50,19 @@ Your responsibilities:
 - Keep responses clear, helpful, and reasonably concise.
 - Do not invent patient records, appointments, medical reports,
   or other information that you cannot access.
-""",
-                input=message
+"""
+
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=f"{system_instructions}\n\nUser message: {message}"
             )
 
             return Response({
-                "reply": response.output_text
+                "reply": response.text
             })
 
         except Exception as e:
-            print("OpenAI Error:", str(e))
+            print("Gemini Error:", str(e))
 
             return Response(
                 {
