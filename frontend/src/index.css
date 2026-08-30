@@ -116,13 +116,13 @@ code {
 
 
 
-/* =========================================
+/* =====================================================
    HOSPIFY LOGIN PAGE
-   CSS / ICON BASED LOGO - NO IMAGE
-========================================= */
+   Premium split-screen design
+   Logo is rendered as SVG/vector — no image box
+===================================================== */
 
-.login-page {
-  position: relative;
+.hospify-login-page {
   width: 100%;
   min-height: 100vh;
 
@@ -130,100 +130,100 @@ code {
   align-items: center;
   justify-content: center;
 
-  padding: 32px 40px;
-  box-sizing: border-box;
-
+  position: relative;
   overflow: hidden;
+
+  padding: 32px;
+
+  box-sizing: border-box;
 
   background:
     radial-gradient(
       circle at 8% 10%,
-      rgba(59, 130, 246, 0.30),
+      rgba(75, 91, 240, 0.20),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 94% 14%,
+      rgba(124, 58, 237, 0.20),
       transparent 30%
     ),
     radial-gradient(
-      circle at 92% 15%,
-      rgba(124, 58, 237, 0.25),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 88% 90%,
-      rgba(6, 182, 212, 0.20),
-      transparent 30%
+      circle at 92% 94%,
+      rgba(6, 182, 212, 0.18),
+      transparent 27%
     ),
     linear-gradient(
       135deg,
-      #eff6ff 0%,
-      #f5f3ff 50%,
-      #ecfeff 100%
+      #f0f2ff 0%,
+      #f8f7ff 48%,
+      #edfaff 100%
     );
+
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
-.login-circle {
+.login-bg-shape {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
 }
 
-.login-circle-one {
-  width: 330px;
-  height: 330px;
-  top: -155px;
-  left: -105px;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 99, 235, 0.22),
-    rgba(124, 58, 237, 0.12)
-  );
+.login-bg-one {
+  width: 310px;
+  height: 310px;
+  top: -180px;
+  left: -130px;
+  background: rgba(84, 99, 240, 0.12);
 }
 
-.login-circle-two {
-  width: 300px;
-  height: 300px;
-  right: -105px;
-  bottom: -105px;
-  background: linear-gradient(
-    135deg,
-    rgba(6, 182, 212, 0.24),
-    rgba(59, 130, 246, 0.15)
-  );
+.login-bg-two {
+  width: 340px;
+  height: 340px;
+  right: -155px;
+  bottom: -170px;
+  background: rgba(6, 182, 212, 0.13);
 }
 
-.login-circle-three {
-  width: 120px;
-  height: 120px;
-  top: 18%;
-  right: 22%;
-  background: rgba(124, 58, 237, 0.10);
+.login-bg-three {
+  width: 170px;
+  height: 170px;
+  right: 15%;
+  top: -90px;
+  background: rgba(124, 58, 237, 0.07);
 }
 
-.login-wrapper {
+.hospify-login-wrapper {
+  width: min(1440px, calc(100vw - 120px));
+  min-height: 860px;
+
   position: relative;
   z-index: 2;
-
-  width: min(1440px, calc(100vw - 80px));
-  min-height: 760px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
   overflow: hidden;
 
-  border-radius: 32px;
+  border-radius: 36px;
 
   background: #ffffff;
 
   border: 1px solid rgba(255, 255, 255, 0.95);
 
   box-shadow:
-    0 5px 15px rgba(30, 41, 59, 0.05),
-    0 30px 80px rgba(30, 41, 59, 0.15);
+    0 5px 15px rgba(15, 23, 42, 0.05),
+    0 35px 80px rgba(15, 23, 42, 0.17);
 
-  animation: login-fade-up 0.6s ease;
+  animation: hospify-login-appear 0.6s ease;
 }
 
-@keyframes login-fade-up {
+@keyframes hospify-login-appear {
   from {
     opacity: 0;
     transform: translateY(18px);
@@ -235,265 +235,194 @@ code {
   }
 }
 
+/* LEFT PANEL */
 
-/* =========================================
-   LEFT INTRO
-========================================= */
-
-.login-intro {
+.hospify-left-panel {
   position: relative;
-
-  padding: 62px 70px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-
+  min-width: 0;
   overflow: hidden;
+  color: #ffffff;
 
   background:
     linear-gradient(
       145deg,
       #2563eb 0%,
-      #4f46e5 48%,
-      #7c3aed 100%
+      #4548e8 47%,
+      #6d2de2 100%
     );
 }
 
-.login-intro::before {
+.hospify-left-panel::before {
   content: "";
 
   position: absolute;
 
-  width: 420px;
-  height: 420px;
+  width: 430px;
+  height: 430px;
+
+  top: -230px;
+  right: -165px;
 
   border-radius: 50%;
-
-  right: -190px;
-  top: -190px;
 
   background: rgba(255, 255, 255, 0.075);
 }
 
-.login-intro::after {
+.hospify-left-panel::after {
   content: "";
 
   position: absolute;
 
-  width: 270px;
-  height: 270px;
+  width: 290px;
+  height: 290px;
+
+  left: -135px;
+  bottom: -135px;
 
   border-radius: 50%;
-
-  left: -125px;
-  bottom: -125px;
 
   background: rgba(255, 255, 255, 0.075);
 }
 
-.login-intro-content {
+.left-panel-content {
   position: relative;
-  z-index: 3;
+  z-index: 2;
 
   width: 100%;
-  max-width: 570px;
-}
+  height: 100%;
+  min-height: 860px;
 
-
-/* =========================================
-   CSS / ICON BASED HOSPIFY LOGO
-   NO IMAGE USED
-========================================= */
-
-.hospify-brand-logo {
-  position: relative;
-  z-index: 3;
-
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-
-  margin-bottom: 42px;
-}
-
-.hospify-logo-mark {
-  position: relative;
-
-  width: 118px;
-  height: 78px;
-
-  margin-left: 2px;
-  margin-bottom: 5px;
-}
-
-.logo-person {
-  position: absolute;
-
-  width: 42px;
-  height: 52px;
-
-  top: 19px;
-
-  border: 6px solid;
-  border-radius: 50%;
+  padding: 85px 72px 75px;
 
   box-sizing: border-box;
-}
-
-.logo-person::before {
-  content: "";
-
-  position: absolute;
-
-  width: 16px;
-  height: 16px;
-
-  border-radius: 50%;
-
-  top: -22px;
-  left: 7px;
-
-  background: currentColor;
-}
-
-.logo-person-left {
-  left: 13px;
-
-  color: #16d7dc;
-
-  border-right-color: transparent;
-
-  transform: rotate(-25deg);
-}
-
-.logo-person-right {
-  right: 13px;
-
-  color: #a5e83d;
-
-  border-left-color: transparent;
-
-  transform: rotate(25deg);
-}
-
-.logo-heart {
-  position: absolute;
-
-  left: 28px;
-  top: 8px;
-
-  width: 62px;
-  height: 62px;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-
-  color: #ffffff;
-
-  filter:
-    drop-shadow(
-      0 5px 12px rgba(0, 0, 0, 0.14)
-    );
 }
 
-.hospify-logo-text {
-  margin: 0;
+/* BRAND / VECTOR LOGO */
+
+.hospify-brand {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.hospify-logo-svg {
+  width: 180px;
+  height: 132px;
+
+  display: block;
+  overflow: visible;
+}
+
+.hospify-logo-name {
+  margin-top: -4px;
 
   color: #ffffff;
 
-  font-family: var(--heading);
+  font-family:
+    "Poppins",
+    "Inter",
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 46px;
+  font-size: 48px;
   line-height: 1;
-
   font-weight: 800;
 
-  letter-spacing: -1.8px;
+  letter-spacing: -2px;
+
+  text-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.10);
 }
 
 .hospify-logo-tagline {
-  margin-top: 9px;
+  margin-top: 10px;
 
-  color: #14d8dc;
+  color: #22d3ee;
 
-  font-size: 14px;
-  line-height: 1.3;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 600;
 
-  font-weight: 700;
+  letter-spacing: 0.1px;
 
-  letter-spacing: 0.2px;
+  text-shadow:
+    0 2px 8px rgba(34, 211, 238, 0.20);
 }
 
+/* LEFT HEADING */
 
-/* =========================================
-   LEFT HEADING
-========================================= */
-
-.login-intro h1 {
-  position: relative;
-  z-index: 2;
-
+.left-panel-content h1 {
   margin: 0 0 24px;
 
-  color: white;
+  color: #ffffff;
 
-  font-family: var(--heading);
+  font-family:
+    "Poppins",
+    "Inter",
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 52px;
+  font-size: 53px;
   line-height: 1.08;
   font-weight: 800;
 
-  letter-spacing: -1.8px;
+  letter-spacing: -2px;
+
+  text-align: left;
 }
 
-.login-intro > .login-intro-content > p {
-  position: relative;
-  z-index: 2;
+.left-panel-content h1 span {
+  color: #ffffff;
+}
 
-  max-width: 500px;
+.left-description {
+  max-width: 530px;
+
+  margin: 0 0 32px;
 
   color: rgba(255, 255, 255, 0.88);
 
   font-size: 17px;
   line-height: 1.7;
+  font-weight: 400;
 
-  margin: 0 0 32px;
+  text-align: left;
 }
 
+/* FEATURES */
 
-/* =========================================
-   FEATURES
-========================================= */
-
-.login-features {
-  position: relative;
-  z-index: 2;
-
+.hospify-features {
   display: flex;
   flex-direction: column;
-
-  gap: 16px;
+  gap: 17px;
 }
 
-.login-feature {
+.hospify-feature {
   display: flex;
   align-items: center;
 
-  gap: 13px;
+  gap: 14px;
 
   color: rgba(255, 255, 255, 0.97);
 
   font-size: 15px;
+  line-height: 1.4;
   font-weight: 600;
 }
 
-.login-feature .feature-check {
-  width: 30px;
-  height: 30px;
+.feature-icon {
+  width: 31px;
+  height: 31px;
 
   flex-shrink: 0;
 
@@ -503,219 +432,230 @@ code {
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
 
-  color: white;
+  background: rgba(37, 211, 238, 0.34);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.08);
 }
 
+/* RIGHT PANEL */
 
-/* =========================================
-   RIGHT LOGIN CARD
-========================================= */
+.hospify-right-panel {
+  min-width: 0;
 
-.login-card {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 60px 72px;
-
-  background: #ffffff;
+  padding: 65px 72px;
 
   box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.98);
 }
 
-.login-card-content {
+.login-form-container {
   width: 100%;
-  max-width: 520px;
+  max-width: 540px;
 }
 
+/* LOGIN HEADER */
 
-/* =========================================
-   LOGIN HEADER
-========================================= */
-
-.login-card-header {
-  margin-bottom: 32px;
+.login-header {
+  margin-bottom: 34px;
 }
 
-.login-card-icon {
-  width: 58px;
-  height: 58px;
+.login-lock-box {
+  width: 70px;
+  height: 70px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 17px;
+  margin-bottom: 27px;
 
-  color: #334155;
+  border-radius: 18px;
+
+  color: #263ea7;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf1ff,
+      #e5ebff
+    );
+
+  box-shadow:
+    0 5px 15px rgba(70, 86, 190, 0.05);
+}
+
+.login-header h2 {
+  margin: 0 0 9px;
+
+  color: #14213d;
+
+  font-family:
+    "Poppins",
+    "Inter",
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 42px;
+  line-height: 1.12;
+  font-weight: 800;
+
+  letter-spacing: -1.6px;
+
+  text-align: left;
+}
+
+.login-header p {
+  margin: 0;
+
+  color: #687995;
+
+  font-size: 17px;
+  line-height: 1.5;
+
+  text-align: left;
+}
+
+/* ERROR */
+
+.hospify-login-error {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+  padding: 12px 15px;
+
+  border-radius: 12px;
+
+  color: #b42318;
+
+  background: #fff2f1;
+
+  border: 1px solid #ffd8d5;
+
+  font-size: 13px;
+
+  text-align: left;
+}
+
+/* FORM */
+
+.hospify-field {
+  margin-bottom: 27px;
+}
+
+.hospify-field label {
+  display: block;
+
+  margin: 0 0 11px;
+
+  color: #1d2c47;
+
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+/* INPUT */
+
+.hospify-input {
+  width: 100%;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border-radius: 16px;
 
   background:
     linear-gradient(
       135deg,
-      #dbeafe,
-      #ede9fe
+      #edf4ff,
+      #e6eefb
     );
 
-  margin-bottom: 22px;
-}
-
-.login-card-header h2 {
-  margin: 0 0 8px;
-
-  color: #172033;
-
-  font-family: var(--heading);
-
-  font-size: 36px;
-  line-height: 1.15;
-  font-weight: 800;
-
-  letter-spacing: -0.9px;
-}
-
-.login-card-header p {
-  margin: 0;
-
-  color: #64748b;
-
-  font-size: 16px;
-}
-
-
-/* =========================================
-   ERROR
-========================================= */
-
-.login-error {
-  display: flex;
-  align-items: flex-start;
-
-  gap: 10px;
-
-  padding: 13px 15px;
-
-  margin-bottom: 22px;
-
-  border-radius: 12px;
-
-  color: #991b1b;
-
-  background: #fef2f2;
-
-  border: 1px solid #fecaca;
-
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-
-/* =========================================
-   INPUTS
-========================================= */
-
-.login-field {
-  width: 100%;
-  margin-bottom: 23px;
-}
-
-.login-field label {
-  display: block;
-
-  margin-bottom: 9px;
-
-  color: #334155;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  letter-spacing: 0.2px;
-}
-
-.login-input-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.login-input-icon {
-  position: absolute;
-
-  left: 16px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  z-index: 2;
-
-  display: flex;
-  align-items: center;
-
-  color: #94a3b8;
-
-  pointer-events: none;
-}
-
-.login-input-wrapper input {
-  width: 100%;
-  height: 57px;
-
-  box-sizing: border-box;
-
-  padding: 0 15px 0 49px;
-
-  border: 1px solid #dbe3ef;
-
-  border-radius: 14px;
-
-  outline: none;
-
-  color: #172033;
-
-  background: #f8faff;
-
-  font-family: inherit;
-  font-size: 15px;
+  border: 1px solid
+    rgba(205, 218, 239, 0.75);
 
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
-.login-input-wrapper input::placeholder {
-  color: #94a3b8;
+.hospify-input svg {
+  flex-shrink: 0;
+  color: #8292ab;
 }
 
-.login-input-wrapper input:focus {
-  border-color: #6366f1;
+.hospify-input:focus-within {
+  border-color: #7285eb;
 
-  background: #ffffff;
+  background: #f0f5ff;
 
   box-shadow:
-    0 0 0 4px rgba(99, 102, 241, 0.10),
-    0 4px 12px rgba(99, 102, 241, 0.08);
+    0 0 0 4px
+    rgba(79, 70, 229, 0.09);
 }
 
-
-/* =========================================
-   LOGIN BUTTON
-========================================= */
-
-.login-button {
+.hospify-input input {
   width: 100%;
-  height: 58px;
+  height: 100%;
 
-  margin-top: 9px;
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #152238;
+
+  font-family: inherit;
+
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.hospify-input input::placeholder {
+  color: #71809a;
+  opacity: 1;
+}
+
+/* SIGN IN BUTTON */
+
+.hospify-signin-button {
+  width: 100%;
+  height: 70px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 11px;
+  gap: 14px;
+
+  margin-top: 4px;
 
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
 
   color: #ffffff;
 
@@ -723,17 +663,20 @@ code {
     linear-gradient(
       100deg,
       #2563eb 0%,
-      #6539e8 100%
+      #4d46e8 52%,
+      #7432df 100%
     );
 
   font-family: inherit;
-  font-size: 16px;
-  font-weight: 750;
+
+  font-size: 17px;
+  font-weight: 700;
 
   cursor: pointer;
 
   box-shadow:
-    0 12px 25px rgba(69, 76, 225, 0.22);
+    0 13px 28px
+    rgba(70, 70, 220, 0.23);
 
   transition:
     transform 0.2s ease,
@@ -741,64 +684,61 @@ code {
     opacity 0.2s ease;
 }
 
-.login-button:hover:not(:disabled) {
+.hospify-signin-button:hover:not(:disabled) {
   transform: translateY(-2px);
 
   box-shadow:
-    0 16px 30px rgba(69, 76, 225, 0.30);
+    0 17px 32px
+    rgba(70, 70, 220, 0.30);
 }
 
-.login-button:active:not(:disabled) {
+.hospify-signin-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.login-button:disabled {
+.hospify-signin-button:disabled {
   cursor: not-allowed;
   opacity: 0.75;
 }
 
+/* SPINNER */
 
-/* =========================================
-   SPINNER
-========================================= */
-
-.login-spinner {
+.hospify-spinner {
   width: 18px;
   height: 18px;
 
   border-radius: 50%;
 
   border:
-    2px solid rgba(255, 255, 255, 0.4);
+    2px solid
+    rgba(255, 255, 255, 0.35);
 
   border-top-color: #ffffff;
 
   animation:
-    login-spin 0.7s linear infinite;
+    hospify-spin 0.7s linear infinite;
 }
 
-@keyframes login-spin {
+@keyframes hospify-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
+/* SECURITY */
 
-/* =========================================
-   SECURITY
-========================================= */
-
-.login-security {
+.hospify-security {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 6px;
+  gap: 7px;
 
-  margin-top: 28px;
-  padding-top: 21px;
+  margin-top: 30px;
+  padding-top: 23px;
 
-  border-top: 1px solid #edf0f5;
+  border-top:
+    1px solid #edf0f5;
 
   color: #91a0b6;
 
@@ -808,113 +748,169 @@ code {
   text-align: center;
 }
 
-.login-security svg {
+.hospify-security svg {
   flex-shrink: 0;
-  color: #8094b3;
+  color: #8193b2;
 }
 
+/* RESPONSIVE */
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+@media (max-width: 1250px) {
+  .hospify-login-wrapper {
+    width: min(
+      1180px,
+      calc(100vw - 60px)
+    );
 
-@media (max-width: 1100px) {
-  .login-page {
-    padding: 25px;
+    min-height: 760px;
   }
 
-  .login-wrapper {
-    width: min(100%, calc(100vw - 50px));
-    min-height: 680px;
+  .left-panel-content {
+    min-height: 760px;
+
+    padding: 55px 52px;
   }
 
-  .login-intro {
-    padding: 50px 45px;
+  .hospify-right-panel {
+    padding: 50px 52px;
   }
 
-  .login-card {
-    padding: 50px 45px;
+  .left-panel-content h1 {
+    font-size: 46px;
   }
 
-  .login-intro h1 {
-    font-size: 44px;
+  .hospify-logo-svg {
+    width: 160px;
+    height: 118px;
   }
 
-  .login-card-header h2 {
-    font-size: 32px;
+  .hospify-logo-name {
+    font-size: 43px;
+  }
+
+  .login-header h2 {
+    font-size: 36px;
   }
 }
 
-@media (max-width: 800px) {
-  .login-page {
-    min-height: 100vh;
-    padding: 18px;
-    overflow-y: auto;
+@media (max-width: 900px) {
+  .hospify-login-page {
+    padding: 20px;
   }
 
-  .login-wrapper {
-    display: flex;
-    flex-direction: column;
-
+  .hospify-login-wrapper {
     width: 100%;
     min-height: auto;
 
-    border-radius: 24px;
+    grid-template-columns: 1fr;
+
+    border-radius: 28px;
   }
 
-  .login-intro {
-    min-height: 560px;
-    padding: 45px 30px;
+  .left-panel-content {
+    min-height: 620px;
+
+    padding: 55px 35px;
   }
 
-  .login-card {
-    padding: 45px 25px;
+  .hospify-right-panel {
+    padding: 55px 35px;
   }
 
-  .login-card-content {
-    max-width: 100%;
+  .left-panel-content h1 {
+    font-size: 43px;
+  }
+
+  .hospify-features {
+    gap: 14px;
   }
 }
 
-@media (max-width: 480px) {
-  .login-page {
+@media (max-width: 600px) {
+  .hospify-login-page {
     padding: 0;
   }
 
-  .login-wrapper {
+  .hospify-login-wrapper {
+    width: 100%;
     border-radius: 0;
     box-shadow: none;
   }
 
-  .login-intro {
-    min-height: 510px;
-    padding: 40px 25px;
+  .left-panel-content {
+    min-height: 540px;
+    padding: 45px 25px;
   }
 
-  .hospify-logo-text {
-    font-size: 40px;
+  .hospify-right-panel {
+    padding: 45px 22px;
   }
 
-  .login-intro h1 {
-    font-size: 38px;
-    letter-spacing: -1.4px;
+  .hospify-logo-svg {
+    width: 140px;
+    height: 105px;
   }
 
-  .login-card {
-    padding: 40px 22px;
+  .hospify-logo-name {
+    font-size: 39px;
   }
 
-  .login-card-header h2 {
-    font-size: 30px;
+  .hospify-logo-tagline {
+    font-size: 14px;
+  }
+
+  .left-panel-content h1 {
+    font-size: 35px;
+    letter-spacing: -1.2px;
+  }
+
+  .left-description {
+    font-size: 14px;
+  }
+
+  .hospify-feature {
+    font-size: 14px;
+  }
+
+  .login-lock-box {
+    width: 58px;
+    height: 58px;
+  }
+
+  .login-header h2 {
+    font-size: 31px;
+  }
+
+  .login-header p {
+    font-size: 15px;
+  }
+
+  .hospify-input {
+    height: 60px;
+  }
+
+  .hospify-signin-button {
+    height: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hospify-login-wrapper,
+  .hospify-signin-button,
+  .hospify-input {
+    animation: none;
+    transition: none;
+  }
+
+  .hospify-spinner {
+    animation: none;
   }
 }
 
 
+
 /* =========================================
-   PATIENT REGISTRATION
-========================================= */
-
-
+   HOSPIFY PATIENT REGISTRATION
 ========================================= */
 
 .registration-page {
