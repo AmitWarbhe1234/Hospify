@@ -53,3 +53,10 @@ export const verifyPayment = async (paymentData) => {
 
   return response.data;
 };
+
+
+// Chatbot API
+export const sendChatMessage = (message) =>
+  API.post("/chatbot/chat/", {
+    message: message,
+  });

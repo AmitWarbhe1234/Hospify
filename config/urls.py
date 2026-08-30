@@ -26,5 +26,10 @@ urlpatterns = [
         include("lab.urls")
     ),
     path('api/', include('billing.urls')),
+
+    path(
+    "api/chatbot/",
+    include("chatbot.urls")
+),
     
 ]

@@ -14,6 +14,7 @@ import ActivateAccount from "./pages/ActivateAccount";
 import LabReports from "./pages/LabReports";
 import GenerateBill from "./pages/GenerateBill";
 import MyBills from "./pages/MyBills";
+import Chatbot from "./components/Chatbot";
 import "./App.css";
 
 
@@ -132,7 +133,7 @@ function App() {
         />
 
       </Routes>
-
+    <Chatbot />
     </BrowserRouter>
   );
 }

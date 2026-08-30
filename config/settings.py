@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'appointments',
     'lab',
     'billing',
+    'chatbot'
     
 ]
 
