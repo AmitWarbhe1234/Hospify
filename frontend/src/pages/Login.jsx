@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { Hospital, Lock, Mail, ShieldCheck, AlertCircle } from "lucide-react";
+
 
 function Login() {
 
@@ -101,7 +103,7 @@ function Login() {
         <div className="login-intro">
 
           <div className="hospital-icon">
-            🏥
+            <Hospital size={28} />
           </div>
 
           <div className="login-brand">
@@ -149,7 +151,7 @@ function Login() {
           <div className="login-card-header">
 
             <div className="login-card-icon">
-              🔐
+              <Lock size={22} />
             </div>
 
             <h2>
@@ -164,18 +166,11 @@ function Login() {
 
 
           {error && (
-
-            <div className="login-error">
-
-              <span>⚠️</span>
-
-              <span>
-                {error}
-              </span>
-
-            </div>
-
-          )}
+              <div className="login-error">
+                <AlertCircle size={16} />
+                <span>{error}</span>
+              </div>
+            )}
 
 
           <form onSubmit={handleLogin}>
@@ -191,7 +186,7 @@ function Login() {
               <div className="login-input-wrapper">
 
                 <span className="login-input-icon">
-                  ✉️
+                  <Mail size={16} />
                 </span>
 
                 <input
@@ -220,7 +215,7 @@ function Login() {
               <div className="login-input-wrapper">
 
                 <span className="login-input-icon">
-                  🔒
+                  <Lock size={16} />
                 </span>
 
                 <input
@@ -248,17 +243,14 @@ function Login() {
 
               {loading ? (
 
-                <>
-                  <span
-                    className="spinner-border spinner-border-sm me-2"
-                    role="status"
-                  ></span>
+                  <>
+                    <span className="login-spinner"></span>
 
-                  Signing in...
+                    Signing in...
 
-                </>
+                  </>
 
-              ) : (
+                ) : (
 
                 <>
                   Sign In
@@ -275,10 +267,9 @@ function Login() {
 
 
           <div className="login-security">
-
-            🔒 Your information is protected with
+            <ShieldCheck size={14} style={{ verticalAlign: "middle", marginRight: "5px" }} />
+            Your information is protected with
             secure authentication.
-
           </div>
 
         </div>

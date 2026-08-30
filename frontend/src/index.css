@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -11,9 +14,9 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+--sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+--heading: 'Poppins', system-ui, 'Segoe UI', Roboto, sans-serif;
+--mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -238,11 +241,25 @@ code {
     1px solid rgba(255, 255, 255, 0.8);
 
   box-shadow:
+    0 2px 8px rgba(30, 41, 59, 0.06),
     0 30px 70px rgba(30, 41, 59, 0.16);
 
   backdrop-filter: blur(20px);
 
   -webkit-backdrop-filter: blur(20px);
+
+  animation: login-fade-up 0.6s ease;
+}
+
+@keyframes login-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -343,40 +360,27 @@ code {
 
 .login-brand {
   position: relative;
-
   z-index: 2;
-
+  font-family: var(--heading);
   font-size: 20px;
-
-  font-weight: 750;
-
+  font-weight: 700;
   letter-spacing: 0.5px;
-
   margin-bottom: 28px;
 }
 
 
 .login-intro h1 {
   position: relative;
-
   z-index: 2;
-
   margin: 0 0 20px;
-
   color: white;
-
+  font-family: var(--heading);
   font-size: 46px;
-
   line-height: 1.12;
-
   font-weight: 800;
-
   letter-spacing: -1.5px;
 }
 
-.login-intro h1 span {
-  color: #bfdbfe;
-}
 
 
 .login-intro > p {
@@ -495,16 +499,12 @@ code {
 
 .login-card-header h2 {
   margin: 0 0 7px;
-
   color: #172033;
-
+  font-family: var(--heading);
   font-size: 31px;
-
   font-weight: 800;
-
   letter-spacing: -0.7px;
 }
-
 
 .login-card-header p {
   color: #64748b;
@@ -563,6 +563,8 @@ code {
   font-size: 13px;
 
   font-weight: 700;
+
+  letter-spacing: 0.2px;
 }
 
 
@@ -573,18 +575,15 @@ code {
 
 .login-input-icon {
   position: absolute;
-
   left: 15px;
-
   top: 50%;
-
   transform: translateY(-50%);
-
   font-size: 16px;
-
   z-index: 2;
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
 }
-
 
 .login-input-wrapper input {
   width: 100%;
@@ -626,8 +625,10 @@ code {
   background: white;
 
   box-shadow:
-    0 0 0 4px
-    rgba(99, 102, 241, 0.1);
+    0 0 0 4px rgba(99, 102, 241, 0.1),
+    0 4px 12px rgba(99, 102, 241, 0.08);
+
+  transform: translateY(-1px);
 }
 
 
@@ -708,6 +709,27 @@ code {
   line-height: 1;
 }
 
+.login-spinner {
+  display: inline-block;
+
+  width: 15px;
+  height: 15px;
+
+  margin-right: 8px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: login-spin 0.7s linear infinite;
+}
+
+@keyframes login-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* =========================================
    SECURITY MESSAGE
@@ -792,6 +814,31 @@ code {
 
   .login-card-header h2 {
     font-size: 26px;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .login-wrapper {
+    animation: none;
+  }
+
+  .login-wrapper,
+  .login-input-wrapper input,
+  .login-button,
+  .patient-card,
+  .patient-action-button,
+  .patient-info-item,
+  .patient-logout,
+  .doctor-card,
+  .doctor-stat-card,
+  .admin-stat-card,
+  .receptionist-action-card,
+  .receptionist-stat-card,
+  .lab-test-card {
+    transition-duration: 0.01ms !important;
   }
 
 }
