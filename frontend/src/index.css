@@ -340,46 +340,35 @@ code {
   text-align: center;
 }
 
-.hospify-logo-art {
-  width: 165px;
-  height: 120px;
+/* =========================================
+   EXACT HOSPIFY LOGO IMAGE
+========================================= */
 
+.hospify-brand-logo {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 32px;
+
+  text-align: center;
+}
+
+.hospify-logo-exact {
   display: block;
-  overflow: visible;
-}
 
-.hospify-logo-name {
-  margin-top: -4px;
+  width: 310px;
+  max-width: 88%;
+  height: auto;
 
-  color: #ffffff;
+  margin: 0 auto;
 
-  font-family: var(--heading);
-
-  font-size: 48px;
-  line-height: 1;
-  font-weight: 800;
-
-  letter-spacing: -2px;
-
-  text-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.10);
-}
-
-.hospify-logo-tagline {
-  margin-top: 10px;
-
-  color: #22d3ee;
-
-  font-family: var(--sans);
-
-  font-size: 17px;
-  line-height: 1;
-  font-weight: 600;
-
-  letter-spacing: 0.15px;
-
-  text-shadow:
-    0 2px 8px rgba(34, 211, 238, 0.22);
+  object-fit: contain;
 }
 
 
@@ -847,17 +836,9 @@ code {
     padding: 40px 25px;
   }
 
-  .hospify-logo-art {
-    width: 125px;
-    height: 95px;
-  }
-
-  .hospify-logo-name {
-    font-size: 38px;
-  }
-
-  .hospify-logo-tagline {
-    font-size: 14px;
+  .hospify-logo-exact {
+    width: 245px;
+    max-width: 90%;
   }
 
   .hospify-brand-logo {
