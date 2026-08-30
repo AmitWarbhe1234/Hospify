@@ -22,45 +22,37 @@ function HospifyLogo() {
         role="img"
       >
         {/* LEFT PERSON HEAD (teal) */}
-        <circle cx="72" cy="30" r="15" fill="#22C1D6" />
+        <circle cx="70" cy="26" r="14" fill="#22C1D6" />
 
         {/* RIGHT PERSON HEAD (green) */}
-        <circle cx="148" cy="30" r="15" fill="#8DD139" />
+        <circle cx="150" cy="26" r="14" fill="#8DD139" />
 
-        {/* LEFT HEART HALF (teal) */}
+        {/* LEFT HEART LOBE (teal, filled) */}
         <path
-          d="M110 118
-             C104 111, 78 92, 74 68
-             C71 50, 82 38, 97 38
-             C104 38, 109 42, 110 52
-             L110 118 Z"
-          fill="none"
-          stroke="#22C1D6"
-          strokeWidth="9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M110 138
+             C78 112, 54 88, 54 60
+             C54 38, 74 26, 95 33
+             C104 36, 110 46, 110 60
+             Z"
+          fill="#22C1D6"
         />
 
-        {/* RIGHT HEART HALF (green) */}
+        {/* RIGHT HEART LOBE (green, filled) */}
         <path
-          d="M110 118
-             C116 111, 142 92, 146 68
-             C149 50, 138 38, 123 38
-             C116 38, 111 42, 110 52
-             L110 118 Z"
-          fill="none"
-          stroke="#8DD139"
-          strokeWidth="9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M110 138
+             C142 112, 166 88, 166 60
+             C166 38, 146 26, 125 33
+             C116 36, 110 46, 110 60
+             Z"
+          fill="#8DD139"
         />
 
         {/* WHITE CIRCLE BEHIND CROSS */}
-        <circle cx="110" cy="72" r="30" fill="#FFFFFF" />
+        <circle cx="110" cy="70" r="28" fill="#FFFFFF" />
 
         {/* HEARTBEAT PULSE LINE */}
         <polyline
-          points="84,72 96,72 101,58 108,86 114,66 120,72 136,72"
+          points="86,70 97,70 102,57 109,84 115,64 121,70 134,70"
           fill="none"
           stroke="#22C1D6"
           strokeWidth="4"
@@ -69,8 +61,8 @@ function HospifyLogo() {
         />
 
         {/* MEDICAL CROSS */}
-        <rect x="103" y="58" width="14" height="30" rx="2" fill="#22C1D6" />
-        <rect x="95" y="66" width="30" height="14" rx="2" fill="#22C1D6" />
+        <rect x="103" y="57" width="14" height="28" rx="2" fill="#22C1D6" />
+        <rect x="96" y="64" width="28" height="14" rx="2" fill="#22C1D6" />
       </svg>
 
       <div className="hospify-logo-name">
