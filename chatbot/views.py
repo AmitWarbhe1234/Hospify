@@ -35,7 +35,7 @@ class ChatbotAPIView(APIView):
             client = OpenAI(api_key=api_key)
 
             response = client.responses.create(
-                model="gpt-5.6-luna",
+                model="gpt-4o-mini",
                 instructions="""
 You are Hospify Assistant, an AI healthcare assistant
 for the Hospify Healthcare Management System.
