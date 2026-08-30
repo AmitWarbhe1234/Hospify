@@ -6,6 +6,9 @@ import {
   Mail,
   ShieldCheck,
   AlertCircle,
+  HeartPulse,
+  Check,
+  ArrowRight,
 } from "lucide-react";
 
 function Login() {
@@ -25,8 +28,8 @@ function Login() {
 
     try {
       const response = await API.post("/auth/login/", {
-        email: email,
-        password: password,
+        email,
+        password,
       });
 
       console.log("Login Response:", response.data);
@@ -82,76 +85,99 @@ function Login() {
   return (
     <div className="login-page">
 
-      {/* =========================================
-          BACKGROUND DECORATIONS
-      ========================================= */}
-
+      {/* Background decorations */}
       <div className="login-circle login-circle-one"></div>
       <div className="login-circle login-circle-two"></div>
       <div className="login-circle login-circle-three"></div>
 
-
       <div className="login-wrapper">
 
-        {/* =========================================
-            LEFT SIDE - HOSPIFY BRANDING
-        ========================================= */}
+        {/* =====================================
+            LEFT BRANDING SECTION
+        ====================================== */}
 
         <div className="login-intro">
 
-          {/* EXACT HOSPIFY LOGO */}
-          <div className="hospify-brand-logo">
+          <div className="login-intro-content">
 
-            <img
-              src="/hospify-logo-exact.png"
-              alt="Hospify"
-              className="hospify-logo-exact"
-            />
+            {/* CSS / ICON BASED LOGO - NO IMAGE */}
+            <div className="hospify-brand-logo">
 
-          </div>
+              <div className="hospify-logo-mark">
 
+                <div className="logo-person logo-person-left"></div>
 
-          {/* =====================================
-              MAIN HEADING
-          ===================================== */}
+                <div className="logo-person logo-person-right"></div>
 
-          <h1>
-            Your Health,
-            <br />
-            <span>Our Priority.</span>
-          </h1>
+                <div className="logo-heart">
+                  <HeartPulse
+                    size={62}
+                    strokeWidth={2.4}
+                  />
+                </div>
 
+              </div>
 
-          {/* =====================================
-              DESCRIPTION
-          ===================================== */}
+              <div className="hospify-logo-text">
+                Hospify
+              </div>
 
-          <p>
-            A smarter healthcare experience that
-            connects patients, doctors and healthcare
-            professionals in one place.
-          </p>
+              <div className="hospify-logo-tagline">
+                Your Health, Our Priority
+              </div>
 
-
-          {/* =====================================
-              FEATURES
-          ===================================== */}
-
-          <div className="login-features">
-
-            <div className="login-feature">
-              <span>✓</span>
-              Secure & reliable healthcare
             </div>
 
-            <div className="login-feature">
-              <span>✓</span>
-              Easy appointment management
-            </div>
 
-            <div className="login-feature">
-              <span>✓</span>
-              Access your medical reports
+            {/* Main heading */}
+            <h1>
+              Your Health,
+              <br />
+              <span>Our Priority.</span>
+            </h1>
+
+
+            {/* Description */}
+            <p>
+              A smarter healthcare experience that
+              connects patients, doctors and healthcare
+              professionals in one place.
+            </p>
+
+
+            {/* Features */}
+            <div className="login-features">
+
+              <div className="login-feature">
+                <div className="feature-check">
+                  <Check size={16} strokeWidth={3} />
+                </div>
+
+                <span>
+                  Secure & reliable healthcare
+                </span>
+              </div>
+
+              <div className="login-feature">
+                <div className="feature-check">
+                  <Check size={16} strokeWidth={3} />
+                </div>
+
+                <span>
+                  Easy appointment management
+                </span>
+              </div>
+
+              <div className="login-feature">
+                <div className="feature-check">
+                  <Check size={16} strokeWidth={3} />
+                </div>
+
+                <span>
+                  Access your medical reports
+                </span>
+              </div>
+
             </div>
 
           </div>
@@ -159,164 +185,156 @@ function Login() {
         </div>
 
 
-        {/* =========================================
-            RIGHT SIDE - LOGIN CARD
-        ========================================= */}
+        {/* =====================================
+            RIGHT LOGIN SECTION
+        ====================================== */}
 
         <div className="login-card">
 
-          {/* =====================================
-              LOGIN HEADER
-          ===================================== */}
+          <div className="login-card-content">
 
-          <div className="login-card-header">
+            {/* Login header */}
+            <div className="login-card-header">
 
-            <div className="login-card-icon">
-              <Lock size={22} />
+              <div className="login-card-icon">
+                <Lock
+                  size={24}
+                  strokeWidth={2}
+                />
+              </div>
+
+              <h2>
+                Welcome Back
+              </h2>
+
+              <p>
+                Sign in to your Hospify account
+              </p>
+
             </div>
 
-            <h2>
-              Welcome Back
-            </h2>
 
-            <p>
-              Sign in to your Hospify account
-            </p>
+            {/* Error message */}
+            {error && (
+              <div className="login-error">
 
-          </div>
+                <AlertCircle size={17} />
+
+                <span>
+                  {error}
+                </span>
+
+              </div>
+            )}
 
 
-          {/* =====================================
-              ERROR MESSAGE
-          ===================================== */}
+            {/* Login form */}
+            <form onSubmit={handleLogin}>
 
-          {error && (
-            <div className="login-error">
+              {/* Email */}
+              <div className="login-field">
 
-              <AlertCircle size={16} />
+                <label htmlFor="email">
+                  Email Address
+                </label>
+
+                <div className="login-input-wrapper">
+
+                  <Mail
+                    className="login-input-icon"
+                    size={18}
+                  />
+
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) =>
+                      setEmail(e.target.value)
+                    }
+                    autoComplete="email"
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* Password */}
+              <div className="login-field">
+
+                <label htmlFor="password">
+                  Password
+                </label>
+
+                <div className="login-input-wrapper">
+
+                  <Lock
+                    className="login-input-icon"
+                    size={18}
+                  />
+
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) =>
+                      setPassword(e.target.value)
+                    }
+                    autoComplete="current-password"
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* Sign in */}
+              <button
+                type="submit"
+                className="login-button"
+                disabled={loading}
+              >
+
+                {loading ? (
+                  <>
+                    <span className="login-spinner"></span>
+                    Signing in...
+                  </>
+                ) : (
+                  <>
+                    <span>Sign In</span>
+
+                    <ArrowRight
+                      size={20}
+                      strokeWidth={2.5}
+                    />
+                  </>
+                )}
+
+              </button>
+
+            </form>
+
+
+            {/* Security message */}
+            <div className="login-security">
+
+              <ShieldCheck
+                size={16}
+                strokeWidth={2}
+              />
 
               <span>
-                {error}
+                Your information is protected with
+                secure authentication.
               </span>
 
             </div>
-          )}
-
-
-          {/* =====================================
-              LOGIN FORM
-          ===================================== */}
-
-          <form onSubmit={handleLogin}>
-
-            {/* ===================================
-                EMAIL FIELD
-            =================================== */}
-
-            <div className="login-field">
-
-              <label>
-                Email Address
-              </label>
-
-              <div className="login-input-wrapper">
-
-                <span className="login-input-icon">
-                  <Mail size={16} />
-                </span>
-
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
-                  }
-                  required
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* ===================================
-                PASSWORD FIELD
-            =================================== */}
-
-            <div className="login-field">
-
-              <label>
-                Password
-              </label>
-
-              <div className="login-input-wrapper">
-
-                <span className="login-input-icon">
-                  <Lock size={16} />
-                </span>
-
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
-                  }
-                  required
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* ===================================
-                SIGN IN BUTTON
-            =================================== */}
-
-            <button
-              type="submit"
-              className="login-button"
-              disabled={loading}
-            >
-
-              {loading ? (
-                <>
-                  <span className="login-spinner"></span>
-                  Signing in...
-                </>
-              ) : (
-                <>
-                  Sign In
-
-                  <span className="login-arrow">
-                    →
-                  </span>
-                </>
-              )}
-
-            </button>
-
-          </form>
-
-
-          {/* =====================================
-              SECURITY MESSAGE
-          ===================================== */}
-
-          <div className="login-security">
-
-            <ShieldCheck
-              size={14}
-              style={{
-                verticalAlign: "middle",
-                marginRight: "5px",
-              }}
-            />
-
-            Your information is protected with
-            secure authentication.
 
           </div>
 
