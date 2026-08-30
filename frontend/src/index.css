@@ -58,11 +58,11 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
-  border-inline: 1px solid var(--border);
+  border-inline: none;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -118,137 +118,131 @@ code {
 
 /* =========================================
    HOSPIFY LOGIN PAGE
+   Premium Large Split-Screen Login
 ========================================= */
 
 .login-page {
   position: relative;
-
+  width: 100%;
   min-height: 100vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 40px 20px;
+  padding: 32px 40px;
+  box-sizing: border-box;
 
   overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 10% 15%,
-      rgba(59, 130, 246, 0.35),
+      circle at 8% 10%,
+      rgba(59, 130, 246, 0.32),
       transparent 30%
     ),
     radial-gradient(
-      circle at 90% 20%,
-      rgba(124, 58, 237, 0.32),
-      transparent 30%
+      circle at 92% 15%,
+      rgba(124, 58, 237, 0.28),
+      transparent 32%
     ),
     radial-gradient(
-      circle at 50% 100%,
-      rgba(6, 182, 212, 0.25),
-      transparent 35%
+      circle at 88% 90%,
+      rgba(6, 182, 212, 0.22),
+      transparent 30%
     ),
     linear-gradient(
       135deg,
-      #eff6ff,
-      #f5f3ff,
-      #ecfeff
+      #eff6ff 0%,
+      #f5f3ff 50%,
+      #ecfeff 100%
     );
 }
 
 
-/* Decorative circles */
+/* =========================================
+   BACKGROUND DECORATIONS
+========================================= */
 
 .login-circle {
   position: absolute;
-
   border-radius: 50%;
-
-  filter: blur(1px);
-
   pointer-events: none;
+  z-index: 0;
 }
 
 .login-circle-one {
-  width: 300px;
-  height: 300px;
-
-  top: -120px;
-  left: -100px;
+  width: 330px;
+  height: 330px;
+  top: -155px;
+  left: -105px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(37, 99, 235, 0.28),
-      rgba(124, 58, 237, 0.15)
+      rgba(37, 99, 235, 0.22),
+      rgba(124, 58, 237, 0.12)
     );
 }
 
 .login-circle-two {
-  width: 250px;
-  height: 250px;
-
-  right: -80px;
-  bottom: -80px;
+  width: 300px;
+  height: 300px;
+  right: -105px;
+  bottom: -105px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(6, 182, 212, 0.25),
-      rgba(59, 130, 246, 0.18)
+      rgba(6, 182, 212, 0.24),
+      rgba(59, 130, 246, 0.15)
     );
 }
 
 .login-circle-three {
-  width: 100px;
-  height: 100px;
-
-  top: 20%;
-
-  right: 25%;
+  width: 120px;
+  height: 120px;
+  top: 18%;
+  right: 22%;
 
   background:
-    rgba(124, 58, 237, 0.12);
+    rgba(124, 58, 237, 0.10);
 }
 
 
-/* Main wrapper */
+/* =========================================
+   MAIN LOGIN WRAPPER
+========================================= */
 
 .login-wrapper {
   position: relative;
-
   z-index: 2;
 
-  width: 1050px;
-
-  max-width: 100%;
-
-  min-height: 650px;
+  width: min(1440px, calc(100vw - 120px));
+  min-height: 860px;
 
   display: grid;
-
   grid-template-columns: 1fr 1fr;
 
   overflow: hidden;
 
-  border-radius: 30px;
+  border-radius: 34px;
 
   background:
-    rgba(255, 255, 255, 0.72);
+    rgba(255, 255, 255, 0.76);
 
   border:
-    1px solid rgba(255, 255, 255, 0.8);
+    1px solid rgba(255, 255, 255, 0.90);
 
   box-shadow:
-    0 2px 8px rgba(30, 41, 59, 0.06),
-    0 30px 70px rgba(30, 41, 59, 0.16);
+    0 3px 10px rgba(30, 41, 59, 0.05),
+    0 30px 75px rgba(30, 41, 59, 0.16);
 
   backdrop-filter: blur(20px);
-
   -webkit-backdrop-filter: blur(20px);
 
-  animation: login-fade-up 0.6s ease;
+  animation:
+    login-fade-up 0.6s ease;
 }
 
 @keyframes login-fade-up {
@@ -256,6 +250,7 @@ code {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -270,12 +265,10 @@ code {
 .login-intro {
   position: relative;
 
-  padding: 65px 55px;
+  padding: 70px 72px;
 
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
 
   color: white;
@@ -296,16 +289,18 @@ code {
 
   position: absolute;
 
-  width: 350px;
-  height: 350px;
+  width: 390px;
+  height: 390px;
 
   border-radius: 50%;
 
-  right: -150px;
-  top: -150px;
+  right: -170px;
+  top: -175px;
 
   background:
-    rgba(255, 255, 255, 0.08);
+    rgba(255, 255, 255, 0.075);
+
+  pointer-events: none;
 }
 
 .login-intro::after {
@@ -313,22 +308,23 @@ code {
 
   position: absolute;
 
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
 
   border-radius: 50%;
 
-  left: -100px;
-  bottom: -100px;
+  left: -115px;
+  bottom: -115px;
 
   background:
-    rgba(255, 255, 255, 0.08);
+    rgba(255, 255, 255, 0.075);
+
+  pointer-events: none;
 }
 
 
 /* =========================================
    HOSPIFY BRAND LOGO
-   Target-style: people + heart + ECG
 ========================================= */
 
 .hospify-brand-logo {
@@ -339,40 +335,44 @@ code {
   flex-direction: column;
   align-items: center;
 
-  margin: 0 auto 28px;
+  margin: 0 auto 32px;
+
   text-align: center;
 }
 
 .hospify-logo-art {
-  width: 142px;
-  height: 105px;
+  width: 165px;
+  height: 120px;
+
   display: block;
   overflow: visible;
 }
 
 .hospify-logo-name {
-  margin-top: -2px;
+  margin-top: -4px;
 
   color: #ffffff;
 
   font-family: var(--heading);
-  font-size: 43px;
+
+  font-size: 48px;
   line-height: 1;
   font-weight: 800;
 
-  letter-spacing: -1.8px;
+  letter-spacing: -2px;
 
   text-shadow:
     0 4px 12px rgba(0, 0, 0, 0.10);
 }
 
 .hospify-logo-tagline {
-  margin-top: 9px;
+  margin-top: 10px;
 
   color: #22d3ee;
 
   font-family: var(--sans);
-  font-size: 16px;
+
+  font-size: 17px;
   line-height: 1;
   font-weight: 600;
 
@@ -383,73 +383,77 @@ code {
 }
 
 
+/* =========================================
+   LEFT HEADING
+========================================= */
+
 .login-intro h1 {
   position: relative;
   z-index: 2;
-  margin: 0 0 20px;
+
+  margin: 0 0 24px;
+
   color: white;
+
   font-family: var(--heading);
-  font-size: 46px;
-  line-height: 1.12;
+
+  font-size: 52px;
+  line-height: 1.08;
   font-weight: 800;
-  letter-spacing: -1.5px;
+
+  letter-spacing: -1.8px;
 }
-
-
 
 .login-intro > p {
   position: relative;
-
   z-index: 2;
 
-  max-width: 450px;
+  max-width: 500px;
 
   color:
-    rgba(255, 255, 255, 0.82);
+    rgba(255, 255, 255, 0.86);
 
-  font-size: 16px;
-
+  font-size: 17px;
   line-height: 1.7;
 
-  margin-bottom: 30px;
+  margin: 0 0 32px;
 }
 
 
-/* Features */
+/* =========================================
+   FEATURES
+========================================= */
 
 .login-features {
   position: relative;
-
   z-index: 2;
 
   display: flex;
-
   flex-direction: column;
 
-  gap: 14px;
+  gap: 17px;
 }
 
 .login-feature {
   display: flex;
-
   align-items: center;
 
-  gap: 12px;
+  gap: 13px;
 
   color:
-    rgba(255, 255, 255, 0.92);
+    rgba(255, 255, 255, 0.96);
 
-  font-size: 14px;
-
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .login-feature span {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -460,45 +464,46 @@ code {
 
   color: white;
 
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 
 /* =========================================
-   LOGIN CARD
+   RIGHT LOGIN CARD
 ========================================= */
 
 .login-card {
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
 
-  padding: 55px 60px;
+  padding: 65px 72px;
 
   background:
-    rgba(255, 255, 255, 0.92);
+    rgba(255, 255, 255, 0.96);
+
+  box-sizing: border-box;
 }
 
+
+/* =========================================
+   LOGIN HEADER
+========================================= */
 
 .login-card-header {
-  margin-bottom: 28px;
+  margin-bottom: 34px;
 }
 
-
 .login-card-icon {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  border-radius: 15px;
-
-  font-size: 23px;
+  border-radius: 17px;
 
   background:
     linear-gradient(
@@ -507,23 +512,29 @@ code {
       #ede9fe
     );
 
-  margin-bottom: 17px;
+  margin-bottom: 22px;
 }
 
-
 .login-card-header h2 {
-  margin: 0 0 7px;
+  margin: 0 0 8px;
+
   color: #172033;
+
   font-family: var(--heading);
-  font-size: 31px;
+
+  font-size: 36px;
+  line-height: 1.15;
   font-weight: 800;
-  letter-spacing: -0.7px;
+
+  letter-spacing: -0.9px;
 }
 
 .login-card-header p {
+  margin: 0;
+
   color: #64748b;
 
-  font-size: 14px;
+  font-size: 16px;
 }
 
 
@@ -533,14 +544,13 @@ code {
 
 .login-error {
   display: flex;
-
   align-items: flex-start;
 
   gap: 10px;
 
   padding: 13px 15px;
 
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
   border-radius: 12px;
 
@@ -553,7 +563,6 @@ code {
     1px solid #fecaca;
 
   font-size: 13px;
-
   line-height: 1.5;
 }
 
@@ -563,54 +572,58 @@ code {
 ========================================= */
 
 .login-field {
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 25px;
 }
-
 
 .login-field label {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 
   color: #334155;
 
-  font-size: 13px;
-
+  font-size: 14px;
   font-weight: 700;
 
   letter-spacing: 0.2px;
 }
 
-
 .login-input-wrapper {
   position: relative;
+  width: 100%;
 }
-
 
 .login-input-icon {
   position: absolute;
+
   left: 15px;
   top: 50%;
+
   transform: translateY(-50%);
+
   font-size: 16px;
+
   z-index: 2;
+
   display: flex;
   align-items: center;
+
   color: #94a3b8;
 }
 
 .login-input-wrapper input {
   width: 100%;
+  height: 56px;
 
-  height: 52px;
+  box-sizing: border-box;
 
-  padding:
-    0 15px 0 45px;
+  padding: 0 15px 0 48px;
 
   border:
     1px solid #dbe3ef;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   outline: none;
 
@@ -620,18 +633,15 @@ code {
     #f8faff;
 
   font-family: inherit;
-
-  font-size: 14px;
+  font-size: 15px;
 
   transition:
     all 0.25s ease;
 }
 
-
 .login-input-wrapper input::placeholder {
   color: #94a3b8;
 }
-
 
 .login-input-wrapper input:focus {
   border-color: #6366f1;
@@ -652,22 +662,19 @@ code {
 
 .login-button {
   width: 100%;
+  height: 58px;
 
-  height: 53px;
-
-  margin-top: 8px;
+  margin-top: 10px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
-  gap: 10px;
+  gap: 11px;
 
   border: none;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   color: white;
 
@@ -681,8 +688,7 @@ code {
 
   font-family: inherit;
 
-  font-size: 15px;
-
+  font-size: 16px;
   font-weight: 700;
 
   cursor: pointer;
@@ -695,7 +701,6 @@ code {
     all 0.25s ease;
 }
 
-
 .login-button:hover:not(:disabled) {
   transform: translateY(-2px);
 
@@ -704,22 +709,17 @@ code {
     rgba(79, 70, 229, 0.32);
 }
 
-
 .login-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-
 .login-button:disabled {
   opacity: 0.75;
-
   cursor: not-allowed;
 }
 
-
 .login-arrow {
   font-size: 20px;
-
   line-height: 1;
 }
 
@@ -731,12 +731,15 @@ code {
 
   margin-right: 8px;
 
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border:
+    2px solid rgba(255, 255, 255, 0.4);
+
   border-top-color: white;
 
   border-radius: 50%;
 
-  animation: login-spin 0.7s linear infinite;
+  animation:
+    login-spin 0.7s linear infinite;
 }
 
 @keyframes login-spin {
@@ -745,14 +748,15 @@ code {
   }
 }
 
+
 /* =========================================
    SECURITY MESSAGE
 ========================================= */
 
 .login-security {
-  margin-top: 25px;
+  margin-top: 28px;
 
-  padding-top: 20px;
+  padding-top: 22px;
 
   border-top:
     1px solid #edf1f7;
@@ -761,8 +765,7 @@ code {
 
   color: #94a3b8;
 
-  font-size: 12px;
-
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -771,22 +774,52 @@ code {
    RESPONSIVE
 ========================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 1200px) {
+
+  .login-page {
+    padding: 28px;
+  }
 
   .login-wrapper {
-    grid-template-columns: 1fr;
-
-    width: 520px;
-
-    min-height: auto;
+    width: min(1200px, calc(100vw - 56px));
+    min-height: 760px;
   }
 
   .login-intro {
-    padding: 40px 35px;
+    padding: 55px 55px;
+  }
+
+  .login-card {
+    padding: 55px 55px;
   }
 
   .login-intro h1 {
-    font-size: 36px;
+    font-size: 46px;
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  .login-page {
+    padding: 20px;
+  }
+
+  .login-wrapper {
+    width: 100%;
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    border-radius: 26px;
+  }
+
+  .login-intro {
+    padding: 55px 40px;
+  }
+
+  .login-intro h1 {
+    font-size: 42px;
   }
 
   .login-features {
@@ -794,21 +827,33 @@ code {
   }
 
   .login-card {
-    padding: 40px 35px;
+    padding: 50px 40px;
   }
-
 }
 
 
 @media (max-width: 500px) {
 
+  .login-page {
+    padding: 12px;
+  }
+
+  .login-wrapper {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .login-intro {
+    padding: 40px 25px;
+  }
+
   .hospify-logo-art {
-    width: 120px;
-    height: 90px;
+    width: 125px;
+    height: 95px;
   }
 
   .hospify-logo-name {
-    font-size: 36px;
+    font-size: 38px;
   }
 
   .hospify-logo-tagline {
@@ -819,20 +864,8 @@ code {
     margin-bottom: 24px;
   }
 
-  .login-page {
-    padding: 15px;
-  }
-
-  .login-wrapper {
-    border-radius: 22px;
-  }
-
-  .login-intro {
-    padding: 30px 25px;
-  }
-
   .login-intro h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .login-intro > p {
@@ -840,13 +873,25 @@ code {
   }
 
   .login-card {
-    padding: 30px 22px;
+    padding: 35px 24px;
   }
 
   .login-card-header h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
+  .login-card-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .login-input-wrapper input {
+    height: 52px;
+  }
+
+  .login-button {
+    height: 54px;
+  }
 }
 
 
@@ -873,8 +918,6 @@ code {
   }
 
 }
-
-
 
 /* =========================================
    HOSPIFY PATIENT REGISTRATION
