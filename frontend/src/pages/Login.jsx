@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import {
-  HeartPulse,
   Lock,
   Mail,
   ShieldCheck,
@@ -81,11 +80,9 @@ function Login() {
     <div className="login-page">
 
       {/* Background decorations */}
-
       <div className="login-circle login-circle-one"></div>
       <div className="login-circle login-circle-two"></div>
       <div className="login-circle login-circle-three"></div>
-
 
       <div className="login-wrapper">
 
@@ -95,26 +92,125 @@ function Login() {
 
         <div className="login-intro">
 
-          {/* Premium Hospify Logo */}
+          {/* Target-style Hospify Logo */}
+          <div className="hospify-brand-logo">
 
-          <div className="hospital-icon">
-            <div className="hospital-logo">
-              <HeartPulse
-                size={34}
-                strokeWidth={2.5}
+            <svg
+              className="hospify-logo-art"
+              viewBox="0 0 160 115"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="Hospify logo"
+              role="img"
+            >
+              <defs>
+                <linearGradient
+                  id="hospifyCyan"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#06B6D4" />
+                </linearGradient>
+
+                <linearGradient
+                  id="hospifyGreen"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor="#A3E635" />
+                  <stop offset="100%" stopColor="#84CC16" />
+                </linearGradient>
+
+                <linearGradient
+                  id="hospifyHeart"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="52%" stopColor="#38BDF8" />
+                  <stop offset="100%" stopColor="#A3E635" />
+                </linearGradient>
+              </defs>
+
+              {/* Left person */}
+              <circle
+                cx="43"
+                cy="22"
+                r="14"
+                fill="url(#hospifyCyan)"
               />
+
+              <path
+                d="M25 72 C23 50 31 37 45 37 C58 37 67 48 67 66"
+                fill="none"
+                stroke="url(#hospifyCyan)"
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+
+              {/* Right person */}
+              <circle
+                cx="117"
+                cy="22"
+                r="14"
+                fill="url(#hospifyGreen)"
+              />
+
+              <path
+                d="M93 66 C93 48 102 37 115 37 C129 37 137 50 135 72"
+                fill="none"
+                stroke="url(#hospifyGreen)"
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+
+              {/* Central heart */}
+              <path
+                d="M80 91
+                   C76 86 52 69 52 52
+                   C52 41 60 34 70 34
+                   C76 34 80 38 80 43
+                   C80 38 84 34 90 34
+                   C100 34 108 41 108 52
+                   C108 69 84 86 80 91Z"
+                fill="url(#hospifyHeart)"
+                stroke="#FFFFFF"
+                strokeWidth="4"
+                strokeLinejoin="round"
+              />
+
+              {/* ECG line */}
+              <path
+                d="M57 58 H67
+                   L72 48
+                   L78 69
+                   L84 40
+                   L90 58
+                   H103"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            <div className="hospify-logo-name">
+              Hospify
             </div>
+
+            <div className="hospify-logo-tagline">
+              Your Health, Our Priority
+            </div>
+
           </div>
 
-
-          {/* Brand */}
-
-          <div className="login-brand">
-            Hospify
-          </div>
-
-
-          {/* Main Heading */}
 
           <h1>
             Your Health,
@@ -123,16 +219,12 @@ function Login() {
           </h1>
 
 
-          {/* Description */}
-
           <p>
             A smarter healthcare experience that
             connects patients, doctors and healthcare
             professionals in one place.
           </p>
 
-
-          {/* Features */}
 
           <div className="login-features">
 
@@ -179,27 +271,17 @@ function Login() {
           </div>
 
 
-          {/* ERROR MESSAGE */}
-
           {error && (
             <div className="login-error">
-
               <AlertCircle size={16} />
-
-              <span>
-                {error}
-              </span>
-
+              <span>{error}</span>
             </div>
           )}
 
 
           <form onSubmit={handleLogin}>
 
-            {/* =====================================
-                EMAIL
-            ===================================== */}
-
+            {/* EMAIL */}
             <div className="login-field">
 
               <label>
@@ -227,10 +309,7 @@ function Login() {
             </div>
 
 
-            {/* =====================================
-                PASSWORD
-            ===================================== */}
-
+            {/* PASSWORD */}
             <div className="login-field">
 
               <label>
@@ -258,10 +337,7 @@ function Login() {
             </div>
 
 
-            {/* =====================================
-                LOGIN BUTTON
-            ===================================== */}
-
+            {/* LOGIN BUTTON */}
             <button
               type="submit"
               className="login-button"
@@ -271,13 +347,11 @@ function Login() {
               {loading ? (
                 <>
                   <span className="login-spinner"></span>
-
                   Signing in...
                 </>
               ) : (
                 <>
                   Sign In
-
                   <span className="login-arrow">
                     →
                   </span>
@@ -288,10 +362,6 @@ function Login() {
 
           </form>
 
-
-          {/* =====================================
-              SECURITY MESSAGE
-          ===================================== */}
 
           <div className="login-security">
 
