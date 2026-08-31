@@ -151,6 +151,30 @@ function MyAppointments() {
   };
 
 
+  const formatTime = (timeString) => {
+
+    if (!timeString) {
+      return "";
+    }
+
+    const [hourStr, minuteStr] = timeString.split(":");
+
+    let hour = parseInt(hourStr, 10);
+    const minute = minuteStr;
+
+    const period = hour >= 12 ? "PM" : "AM";
+
+    hour = hour % 12;
+
+    if (hour === 0) {
+      hour = 12;
+    }
+
+    return `${hour}:${minute} ${period}`;
+
+  };
+
+
   if (loading) {
 
     return (
@@ -411,7 +435,7 @@ function MyAppointments() {
                       </span>
 
                       <h3>
-                        <h3>Dr. {appointment.doctor_name}</h3>
+                        Dr. {appointment.doctor_name}
                       </h3>
 
                       <p>
@@ -447,7 +471,7 @@ function MyAppointments() {
                       </span>
 
                       <strong>
-                        {appointment.appointment_time}
+                        {formatTime(appointment.appointment_time)}
                       </strong>
 
                     </div>
@@ -572,7 +596,7 @@ function MyAppointments() {
                 </span>
 
                 <strong>
-                  Dr. {selectedAppointment.doctor}
+                  Dr. {selectedAppointment.doctor_name}
                 </strong>
 
               </div>
@@ -596,7 +620,7 @@ function MyAppointments() {
                 </span>
 
                 <strong>
-                  {selectedAppointment.appointment_time}
+                  {formatTime(selectedAppointment.appointment_time)}
                 </strong>
 
               </div>
