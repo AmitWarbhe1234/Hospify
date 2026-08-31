@@ -18,6 +18,8 @@ class DoctorSerializer(serializers.ModelSerializer):
 
 class AppointmentSerializer(serializers.ModelSerializer):
 
+    doctor_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Appointment
 
@@ -25,6 +27,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
             "id",
             "patient",
             "doctor",
+            "doctor_name",
             "appointment_date",
             "appointment_time",
             "reason",
@@ -36,6 +39,9 @@ class AppointmentSerializer(serializers.ModelSerializer):
             "patient",
             "status",
         ]
+
+    def get_doctor_name(self, obj):
+        return f"{obj.doctor.first_name} {obj.doctor.last_name}".strip()
 
     def validate_doctor(self, value):
 

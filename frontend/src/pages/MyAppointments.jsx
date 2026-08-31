@@ -411,7 +411,7 @@ function MyAppointments() {
                       </span>
 
                       <h3>
-                        Dr. {appointment.doctor}
+                        <h3>Dr. {appointment.doctor_name}</h3>
                       </h3>
 
                       <p>
