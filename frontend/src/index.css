@@ -7002,14 +7002,15 @@ code {
 
 .appointment-details {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
 
-  flex: 2 1 320px;
+  flex: 2 1 480px;
 }
 
 .appointment-detail {
-  min-width: 120px;
+  flex: 1;
+  min-width: 100px;
 
   padding: 12px 14px;
 
@@ -7017,6 +7018,10 @@ code {
 
   background: #f8faff;
   border: 1px solid #edf1f8;
+}
+
+.appointment-detail.reason-detail {
+  flex: 1.5;
 }
 
 .appointment-detail.reason-detail {
