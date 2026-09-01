@@ -22,7 +22,7 @@ function DoctorDashboard() {
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("user");
 
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {

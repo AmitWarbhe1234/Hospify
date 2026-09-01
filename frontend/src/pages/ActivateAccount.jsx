@@ -168,7 +168,7 @@ function ActivateAccount() {
                 <p>Your password has been set. You can now log in.</p>
 
                 <Link
-                  to="/login"
+                  to="/"
                   className="hospify-signin-button"
                   style={{
                     marginTop: "28px",

@@ -10,7 +10,7 @@ function ReceptionistDashboard() {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("user");
 
-    navigate("/login");
+    navigate("/");
   };
 
   return (

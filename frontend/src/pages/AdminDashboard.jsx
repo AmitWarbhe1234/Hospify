@@ -107,7 +107,7 @@ const confirmEdit = async (e) => {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("user");
 
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const confirmEdit = async (e) => {
           error.response?.data
         );
 
-        navigate("/login");
+        navigate("/");
       }
     };
 
