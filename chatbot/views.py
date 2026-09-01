@@ -37,7 +37,7 @@ class ChatbotView(APIView):
 
         return Response({
             'reply': (
-                "Sorry, mujhe samajh nahi aaya. "
-                "Kripya recep@hospify.com par contact karein."
+                "Sorry, I didn't understand that. "
+                "Please contact us at recep@hospify.com for further assistance."
             )
         })
