@@ -1,72 +1,43 @@
-import os
-
-from dotenv import load_dotenv
-from google import genai
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from .models import FAQ
 
 
-load_dotenv()
-
-
-class ChatbotAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+class ChatbotView(APIView):
+    """
+    POST { "message": "user ka text" }
+    Returns { "reply": "matched answer" }
+    """
 
     def post(self, request):
-        message = request.data.get("message", "").strip()
+        user_msg = request.data.get('message', '').strip().lower()
 
-        if not message:
+        if not user_msg:
             return Response(
-                {"error": "Message is required."},
-                status=400
+                {'reply': 'Kripya apna sawaal likhein.'},
+                status=status.HTTP_400_BAD_REQUEST
             )
 
-        api_key = os.getenv("GEMINI_API_KEY")
+        best_match = None
+        best_score = 0
 
-        if not api_key:
-            return Response(
-                {"error": "Gemini API key is not configured."},
-                status=500
+        for faq in FAQ.objects.all():
+            score = 0
+            for kw in faq.keywords.split(','):
+                kw = kw.strip().lower()
+                if kw and kw in user_msg:
+                    score += 1
+            if score > best_score:
+                best_score = score
+                best_match = faq
+
+        if best_match:
+            return Response({'reply': best_match.answer})
+
+        return Response({
+            'reply': (
+                "Sorry, mujhe samajh nahi aaya. "
+                "Kripya recep@hospify.com par contact karein."
             )
-
-        try:
-            client = genai.Client(api_key=api_key)
-
-            system_instructions = """
-You are Hospify Assistant, an AI healthcare assistant
-for the Hospify Healthcare Management System.
-
-Your responsibilities:
-- Help patients understand how to use Hospify.
-- Explain appointments, doctors, lab reports, patient profiles,
-  registration, and other healthcare-management features.
-- Give general health information in simple language.
-- Never claim to diagnose a patient.
-- Never replace a qualified doctor.
-- If the user describes serious or emergency symptoms,
-  advise them to seek immediate professional medical help.
-- Keep responses clear, helpful, and reasonably concise.
-- Do not invent patient records, appointments, medical reports,
-  or other information that you cannot access.
-"""
-
-            response = client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=f"{system_instructions}\n\nUser message: {message}"
-            )
-
-            return Response({
-                "reply": response.text
-            })
-
-        except Exception as e:
-            print("Gemini Error:", str(e))
-
-            return Response(
-                {
-                    "error": "Unable to get a response from the AI assistant."
-                },
-                status=500
-            )
+        })
