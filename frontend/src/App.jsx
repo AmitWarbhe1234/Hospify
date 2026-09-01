@@ -30,12 +30,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/activate" element={<ActivateAccount />} />
 
-        <Route
-          path="/"
-          element={<h1>Welcome to Hospify</h1>}
-        />
-
-
+ 
         <Route
           path="/patient-dashboard"
           element={
