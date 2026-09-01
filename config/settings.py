@@ -30,6 +30,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -191,3 +192,19 @@ CELERY_TASK_EAGER_PROPAGATES = True
 
 
 BREVO_API_KEY = config("BREVO_API_KEY")
+
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Hospify Admin",
+    "site_header": "Hospify",
+    "site_brand": "Hospify",
+    "welcome_sign": "Welcome to Hospify Admin",
+    "copyright": "Hospify Ltd",
+    "show_ui_builder": True,
+}
+
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+}
