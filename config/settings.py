@@ -157,7 +157,7 @@ EMAIL_HOST_PASSWORD = config("BREVO_SMTP_KEY")
 DEFAULT_FROM_EMAIL = config("BREVO_FROM_EMAIL")
 EMAIL_TIMEOUT = 25     
 
-FRONTEND_URL = 'http://localhost:5173'
+FRONTEND_URL = config("FRONTEND_URL", default="http://localhost:5173")
 
 
 REST_FRAMEWORK = {
