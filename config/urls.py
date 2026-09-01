@@ -31,5 +31,5 @@ urlpatterns = [
     "api/chatbot/",
     include("chatbot.urls")
     ),
-    path('api/', include('chatbot.urls')),
+    
 ]
