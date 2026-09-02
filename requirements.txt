@@ -12,8 +12,8 @@ click-plugins==1.1.1.2
 click-repl==0.3.0
 dj-database-url==3.1.2
 Django==6.1
-django-jazzmin==3.0.5
 django-cors-headers==4.9.0
+django-jazzmin==3.0.5
 djangorestframework==3.18.0
 djangorestframework_simplejwt==5.5.1
 gunicorn==26.2.0
@@ -23,8 +23,10 @@ httpx2==2.12.0
 idna==3.19
 jiter==0.16.0
 kombu==5.6.2
+numpy==2.5.2
 openai==3.6.0
 packaging==26.3
+pandas==3.0.5
 pillow==12.3.0
 prompt_toolkit==3.0.53
 psycopg==3.3.4
@@ -51,4 +53,3 @@ urllib3==2.7.0
 vine==5.1.0
 wcwidth==0.8.2
 whitenoise==6.12.0
-pandas==3.0.5

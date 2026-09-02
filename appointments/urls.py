@@ -1,8 +1,13 @@
 from django.urls import path
 from .views import (
-    DoctorListAPIView,BookAppointmentAPIView,
-    MyAppointmentsAPIView, DoctorAppointmentsAPIView,
-    UpdateAppointmentStatusAPIView,AnalyticsAPIView,)
+    DoctorListAPIView,
+    BookAppointmentAPIView,
+    MyAppointmentsAPIView,
+    DoctorAppointmentsAPIView,
+    UpdateAppointmentStatusAPIView,
+    CancelAppointmentAPIView,
+    AnalyticsAPIView,
+)
 
 
 urlpatterns = [
