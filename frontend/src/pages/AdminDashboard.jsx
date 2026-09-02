@@ -205,7 +205,9 @@ useEffect(() => {
 
   }
 };
-
+useEffect(() => {
+  fetchAnalytics();
+}, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -516,7 +518,8 @@ useEffect(() => {
                 label
               >
 
-                {Object.entries(
+
+               {Object.entries(
                   analytics?.appointment_status || {}
                 ).map(([name], index) => (
                   <Cell key={`cell-${index}`} />
