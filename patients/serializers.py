@@ -63,3 +63,30 @@ class PatientListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ['id', 'patient_id', 'full_name', 'email', 'mobile']
+
+
+class PatientDetailSerializer(serializers.ModelSerializer):
+    """Full patient details, used by the Find Patient -> patient details page."""
+
+    full_name = serializers.CharField(source='user.get_full_name', read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+    email = serializers.CharField(source='user.email', read_only=True)
+
+    class Meta:
+        model = Patient
+        fields = [
+            'id',
+            'patient_id',
+            'full_name',
+            'first_name',
+            'last_name',
+            'email',
+            'date_of_birth',
+            'gender',
+            'blood_group',
+            'mobile',
+            'emergency_contact',
+            'address',
+            'created_at',
+        ]

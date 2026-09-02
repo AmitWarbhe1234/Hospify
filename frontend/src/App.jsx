@@ -15,6 +15,8 @@ import LabReports from "./pages/LabReports";
 import GenerateBill from "./pages/GenerateBill";
 import MyBills from "./pages/MyBills";
 import Chatbot from "./components/Chatbot";
+import FindPatient from "./pages/FindPatient";
+import PatientDetails from "./pages/PatientDetails";
 import "./App.css";
 
 
@@ -117,6 +119,24 @@ function App() {
           element={<GenerateBill />}
         />
 
+        <Route
+          path="/find-patient"
+          element={
+            <ProtectedRoute>
+              <FindPatient />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/patient/:patientId"
+          element={
+            <ProtectedRoute>
+              <PatientDetails />
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route
           path="/lab-technician-dashboard"
@@ -134,5 +154,3 @@ function App() {
 }
 
 export default App;
-
-

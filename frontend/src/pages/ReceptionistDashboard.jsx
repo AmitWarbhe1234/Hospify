@@ -266,11 +266,7 @@ function ReceptionistDashboard() {
 
                 <button
                   className="receptionist-secondary-button"
-                  onClick={() => {
-                    alert(
-                      "Patient Search functionality will be added next."
-                    );
-                  }}
+                  onClick={() => navigate("/find-patient")}
                 >
                   Search Patient
                   <span>→</span>
@@ -322,7 +318,7 @@ function ReceptionistDashboard() {
                 </div>
 
                 <h3>
-                  Appointments
+                  Appointment
                 </h3>
 
                 <p>

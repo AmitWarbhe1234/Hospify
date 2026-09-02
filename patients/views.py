@@ -2,13 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
+from django.db.models import Q
 import secrets
 from accounts.models import User
 from .models import Patient
 from .serializers import PatientRegistrationSerializer
 from .tasks import send_patient_activation_email
 from rest_framework.generics import ListAPIView
-from .serializers import PatientListSerializer
+from .serializers import (
+    PatientListSerializer,
+    PatientDetailSerializer,
+)
 
 
 
@@ -151,3 +155,82 @@ class PatientBillingListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Patient.objects.all()
     serializer_class = PatientListSerializer
+
+
+class PatientSearchView(APIView):
+    """
+    Find Patient feature.
+    GET /api/patients/search/?q=<text>
+    Searches by patient_id, first name, last name, or email.
+    Only receptionists and admins can search patients.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+
+        if request.user.role not in [User.Role.RECEPTIONIST, User.Role.ADMIN]:
+            return Response(
+                {
+                    "detail": "You do not have permission to search patients."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        query = request.query_params.get("q", "").strip()
+
+        patients = Patient.objects.select_related("user").all()
+
+        if query:
+            patients = patients.filter(
+                Q(patient_id__icontains=query) |
+                Q(user__first_name__icontains=query) |
+                Q(user__last_name__icontains=query) |
+                Q(user__email__icontains=query)
+            )
+
+        patients = patients.order_by("-created_at")[:50]
+
+        serializer = PatientListSerializer(patients, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PatientDetailView(APIView):
+    """
+    GET /api/patients/<patient_id>/
+    Returns full details for one patient, used by the
+    Find Patient -> patient details page.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, patient_id):
+
+        if request.user.role not in [
+            User.Role.RECEPTIONIST,
+            User.Role.ADMIN,
+            User.Role.DOCTOR,
+        ]:
+            return Response(
+                {
+                    "detail": "You do not have permission to view patient details."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        try:
+            patient = Patient.objects.select_related("user").get(
+                patient_id=patient_id
+            )
+        except Patient.DoesNotExist:
+            return Response(
+                {
+                    "detail": "Patient not found."
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = PatientDetailSerializer(patient)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
