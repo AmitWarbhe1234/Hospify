@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 import dj_database_url
 import os
 
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'accounts',
     'patients',
     'appointments',
@@ -167,6 +170,20 @@ REST_FRAMEWORK = {
 }
 
 
+# JWT token lifetime + refresh token settings.
+# Access token expires quickly for security, but the refresh token
+# lasts much longer so the frontend can silently get a new access
+# token instead of showing "Given token not valid for any token type".
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+
 AUTH_USER_MODEL = 'accounts.User'
 
 
@@ -191,5 +208,3 @@ CELERY_TASK_EAGER_PROPAGATES = True
 
 
 BREVO_API_KEY = config("BREVO_API_KEY")
-
-

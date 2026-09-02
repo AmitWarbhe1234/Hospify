@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-
+from rest_framework_simplejwt.views import (TokenRefreshView,TokenVerifyView,)
 
 
 urlpatterns = [
@@ -31,5 +31,11 @@ urlpatterns = [
     "api/chatbot/",
     include("chatbot.urls")
     ),
+
+    # JWT token refresh + verify endpoints.
+    # Frontend calls /api/token/refresh/ with the refresh token
+    # to silently get a new access token instead of forcing re-login.
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     
 ]
