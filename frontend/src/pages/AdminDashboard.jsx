@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
-
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 
 function AdminDashboard() {
@@ -429,6 +436,111 @@ useEffect(() => {
           </div>
 
         </div>
+
+
+
+      {/* STAT CARDS */}
+      <div className="admin-stats">
+
+        // tumhare existing cards
+        // Doctors
+        // Receptionists
+        // Lab Technicians
+        // Patients
+
+      </div>
+
+
+      {/* 👇 YAHAN SE ANALYTICS START */}
+
+      <div className="analytics-section">
+
+        <h2>Healthcare Analytics</h2>
+
+        <div className="analytics-cards">
+
+          <div className="analytics-card">
+            <span>👥</span>
+            <p>Total Patients</p>
+            <h3>
+              {analyticsLoading ? "..." : analytics?.total_patients ?? 0}
+            </h3>
+          </div>
+
+          <div className="analytics-card">
+            <span>👨‍⚕️</span>
+            <p>Total Doctors</p>
+            <h3>
+              {analyticsLoading ? "..." : analytics?.total_doctors ?? 0}
+            </h3>
+          </div>
+
+          <div className="analytics-card">
+            <span>📅</span>
+            <p>Total Appointments</p>
+            <h3>
+              {analyticsLoading ? "..." : analytics?.total_appointments ?? 0}
+            </h3>
+          </div>
+
+          <div className="analytics-card">
+            <span>✅</span>
+            <p>Completed Appointments</p>
+            <h3>
+              {analyticsLoading
+                ? "..."
+                : analytics?.appointment_status?.COMPLETED ?? 0}
+            </h3>
+          </div>
+
+          <div className="analytics-chart-card">
+
+          <h3>Appointment Status</h3>
+
+          <ResponsiveContainer width="100%" height={300}>
+
+            <PieChart>
+
+              <Pie
+                data={Object.entries(
+                  analytics?.appointment_status || {}
+                ).map(([name, value]) => ({
+                  name,
+                  value,
+                }))}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                label
+              >
+
+                {Object.entries(
+                  analytics?.appointment_status || {}
+                ).map(([name], index) => (
+                  <Cell key={`cell-${index}`} />
+                ))}
+
+              </Pie>
+
+              <Tooltip />
+
+              <Legend />
+
+            </PieChart>
+
+          </ResponsiveContainer>
+
+        </div>
+
+        </div>
+
+      </div>
+
+      {/* 👆 ANALYTICS END */}
+
+
 
 
         {/* CREATE STAFF */}
