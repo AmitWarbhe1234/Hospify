@@ -247,7 +247,7 @@ function ReceptionistDashboard() {
               </div>
 
 
-              {/* Patient Search - UI only for now */}
+              {/* Patient Search */}
 
               <div className="receptionist-action-card">
 
@@ -265,7 +265,7 @@ function ReceptionistDashboard() {
                 </p>
 
                 <button
-                  className="receptionist-secondary-button"
+                  className="receptionist-primary-button"
                   onClick={() => navigate("/find-patient")}
                 >
                   Search Patient
