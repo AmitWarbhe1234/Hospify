@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (
     DoctorListAPIView,BookAppointmentAPIView,
     MyAppointmentsAPIView, DoctorAppointmentsAPIView,
-    UpdateAppointmentStatusAPIView,CancelAppointmentAPIView)
+    UpdateAppointmentStatusAPIView,AnalyticsAPIView,)
 
 
 urlpatterns = [
@@ -42,5 +42,11 @@ urlpatterns = [
         "cancel/<int:appointment_id>/",
         CancelAppointmentAPIView.as_view(),
         name="cancel-appointment"
+),
+
+    path(
+        "analytics/",
+        AnalyticsAPIView.as_view(),
+        name="analytics"
 ),
 ]

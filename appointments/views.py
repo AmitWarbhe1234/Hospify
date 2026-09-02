@@ -1,7 +1,9 @@
+import pandas as pd
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from patients.models import Patient
 from accounts.models import User
 from .models import Appointment
 from .serializers import (DoctorSerializer,AppointmentSerializer)
@@ -270,3 +272,119 @@ class CancelAppointmentAPIView(APIView):
             },
             status=200
         )
+
+
+
+
+
+class AnalyticsAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+
+        # -------------------------
+        # PATIENT DATA
+        # -------------------------
+
+        patients = Patient.objects.all().values(
+            "gender",
+            "blood_group",
+            "created_at"
+        )
+
+        patient_df = pd.DataFrame(patients)
+
+        total_patients = len(patient_df)
+
+        # Gender statistics
+        if not patient_df.empty:
+            gender_data = (
+                patient_df["gender"]
+                .fillna("Unknown")
+                .value_counts()
+                .to_dict()
+            )
+        else:
+            gender_data = {}
+
+        # Blood group statistics
+        if not patient_df.empty:
+            blood_group_data = (
+                patient_df["blood_group"]
+                .replace("", "Unknown")
+                .fillna("Unknown")
+                .value_counts()
+                .to_dict()
+            )
+        else:
+            blood_group_data = {}
+
+        # -------------------------
+        # DOCTORS
+        # -------------------------
+
+        total_doctors = User.objects.filter(
+            role="DOCTOR"
+        ).count()
+
+        # -------------------------
+        # APPOINTMENTS
+        # -------------------------
+
+        appointments = Appointment.objects.all().values(
+            "status",
+            "appointment_date"
+        )
+
+        appointment_df = pd.DataFrame(appointments)
+
+        total_appointments = len(appointment_df)
+
+        if not appointment_df.empty:
+
+            appointment_status = (
+                appointment_df["status"]
+                .value_counts()
+                .to_dict()
+            )
+
+            appointment_df["appointment_date"] = pd.to_datetime(
+                appointment_df["appointment_date"]
+            )
+
+            monthly_appointments = (
+                appointment_df
+                .groupby(
+                    appointment_df["appointment_date"].dt.strftime("%Y-%m")
+                )
+                .size()
+                .to_dict()
+            )
+
+        else:
+
+            appointment_status = {}
+            monthly_appointments = {}
+
+        # -------------------------
+        # RESPONSE
+        # -------------------------
+
+        return Response({
+
+            "total_patients": total_patients,
+
+            "total_doctors": total_doctors,
+
+            "total_appointments": total_appointments,
+
+            "gender_distribution": gender_data,
+
+            "blood_group_distribution": blood_group_data,
+
+            "appointment_status": appointment_status,
+
+            "monthly_appointments": monthly_appointments,
+
+        })

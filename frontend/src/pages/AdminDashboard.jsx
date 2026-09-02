@@ -32,7 +32,8 @@ function AdminDashboard() {
   const [editError, setEditError] = useState("");
 
   const [department, setDepartment] = useState("");
-
+  const [analytics, setAnalytics] = useState(null);
+  const [analyticsLoading, setAnalyticsLoading] = useState(true);
 
 
 
@@ -174,6 +175,31 @@ useEffect(() => {
 
     fetchPatients();
   }, []);
+
+
+  const fetchAnalytics = async () => {
+  try {
+    const response = await API.get("/appointments/analytics/");
+
+    console.log("Analytics:", response.data);
+
+    setAnalytics(response.data);
+
+  } catch (error) {
+
+    console.log(
+      "Analytics Error:",
+      error.response?.data
+    );
+
+  } finally {
+
+    setAnalyticsLoading(false);
+
+  }
+};
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
