@@ -459,7 +459,31 @@ useEffect(() => {
 
       {/* 👇 YAHAN SE ANALYTICS START */}
 
-  
+      <div className="analytics-section">
+
+        <h2>Healthcare Analytics</h2>
+
+        <div className="analytics-cards">
+
+          
+
+          <div className="analytics-card">
+            <span>📅</span>
+            <p>Total Appointments</p>
+            <h3>
+              {analyticsLoading ? "..." : analytics?.total_appointments ?? 0}
+            </h3>
+          </div>
+
+          <div className="analytics-card">
+            <span>✅</span>
+            <p>Completed Appointments</p>
+            <h3>
+              {analyticsLoading
+                ? "..."
+                : analytics?.appointment_status?.COMPLETED ?? 0}
+            </h3>
+          </div>
 
           <div className="analytics-chart-card">
 
