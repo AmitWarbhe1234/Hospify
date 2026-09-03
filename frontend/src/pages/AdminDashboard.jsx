@@ -456,21 +456,7 @@ useEffect(() => {
 
         <div className="analytics-cards">
 
-          <div className="analytics-card">
-            <span>👥</span>
-            <p>Total Patients</p>
-            <h3>
-              {analyticsLoading ? "..." : analytics?.total_patients ?? 0}
-            </h3>
-          </div>
-
-          <div className="analytics-card">
-            <span>👨‍⚕️</span>
-            <p>Total Doctors</p>
-            <h3>
-              {analyticsLoading ? "..." : analytics?.total_doctors ?? 0}
-            </h3>
-          </div>
+          
 
           <div className="analytics-card">
             <span>📅</span>
