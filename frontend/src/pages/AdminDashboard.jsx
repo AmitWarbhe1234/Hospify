@@ -17,7 +17,16 @@ import {
   Line,
 } from "recharts";
 
-
+const COLORS = [
+  "#6366F1", // indigo
+  "#EC4899", // pink
+  "#10B981", // emerald
+  "#F59E0B", // amber
+  "#3B82F6", // blue
+  "#EF4444", // red
+  "#8B5CF6", // violet
+  "#14B8A6", // teal
+];
 function AdminDashboard() {
   const navigate = useNavigate();
 
@@ -450,31 +459,7 @@ useEffect(() => {
 
       {/* 👇 YAHAN SE ANALYTICS START */}
 
-      <div className="analytics-section">
-
-        <h2>Healthcare Analytics</h2>
-
-        <div className="analytics-cards">
-
-          
-
-          <div className="analytics-card">
-            <span>📅</span>
-            <p>Total Appointments</p>
-            <h3>
-              {analyticsLoading ? "..." : analytics?.total_appointments ?? 0}
-            </h3>
-          </div>
-
-          <div className="analytics-card">
-            <span>✅</span>
-            <p>Completed Appointments</p>
-            <h3>
-              {analyticsLoading
-                ? "..."
-                : analytics?.appointment_status?.COMPLETED ?? 0}
-            </h3>
-          </div>
+  
 
           <div className="analytics-chart-card">
 
@@ -503,7 +488,10 @@ useEffect(() => {
                {Object.entries(
                   analytics?.appointment_status || {}
                 ).map(([name], index) => (
-                  <Cell key={`cell-${index}`} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
 
               </Pie>
@@ -546,7 +534,10 @@ useEffect(() => {
                   {Object.entries(
                     analytics?.gender_distribution || {}
                   ).map(([name], index) => (
-                    <Cell key={`gender-cell-${index}`} />
+                    <Cell
+                      key={`gender-cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
                   ))}
 
                 </Pie>
@@ -586,7 +577,16 @@ useEffect(() => {
 
                 <Tooltip />
 
-                <Bar dataKey="count" fill="#8884d8" />
+                <Bar dataKey="count">
+                  {Object.entries(
+                    analytics?.blood_group_distribution || {}
+                  ).map(([name], index) => (
+                    <Cell
+                      key={`blood-cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Bar>
 
               </BarChart>
 
@@ -624,8 +624,9 @@ useEffect(() => {
                 <Line
                   type="monotone"
                   dataKey="count"
-                  stroke="#82ca9d"
-                  strokeWidth={2}
+                  stroke="#6366F1"
+                  strokeWidth={3}
+                  dot={{ fill: "#EC4899", r: 5 }}
                 />
 
               </LineChart>
