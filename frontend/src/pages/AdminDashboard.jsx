@@ -8,6 +8,13 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  LineChart,
+  Line,
 } from "recharts";
 
 
@@ -441,18 +448,6 @@ useEffect(() => {
 
 
 
-      {/* STAT CARDS */}
-      <div className="admin-stats">
-
-        // tumhare existing cards
-        // Doctors
-        // Receptionists
-        // Lab Technicians
-        // Patients
-
-      </div>
-
-
       {/* 👇 YAHAN SE ANALYTICS START */}
 
       <div className="analytics-section">
@@ -538,6 +533,120 @@ useEffect(() => {
         </div>
 
         </div>
+                    {/* GENDER DISTRIBUTION CHART */}
+          <div className="analytics-chart-card">
+
+            <h3>Gender Distribution</h3>
+
+            <ResponsiveContainer width="100%" height={300}>
+
+              <PieChart>
+
+                <Pie
+                  data={Object.entries(
+                    analytics?.gender_distribution || {}
+                  ).map(([name, value]) => ({
+                    name,
+                    value,
+                  }))}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  label
+                >
+
+                  {Object.entries(
+                    analytics?.gender_distribution || {}
+                  ).map(([name], index) => (
+                    <Cell key={`gender-cell-${index}`} />
+                  ))}
+
+                </Pie>
+
+                <Tooltip />
+
+                <Legend />
+
+              </PieChart>
+
+            </ResponsiveContainer>
+
+          </div>
+
+
+          {/* BLOOD GROUP DISTRIBUTION CHART */}
+          <div className="analytics-chart-card">
+
+            <h3>Blood Group Distribution</h3>
+
+            <ResponsiveContainer width="100%" height={300}>
+
+              <BarChart
+                data={Object.entries(
+                  analytics?.blood_group_distribution || {}
+                ).map(([name, value]) => ({
+                  name,
+                  count: value,
+                }))}
+              >
+
+                <CartesianGrid strokeDasharray="3 3" />
+
+                <XAxis dataKey="name" />
+
+                <YAxis allowDecimals={false} />
+
+                <Tooltip />
+
+                <Bar dataKey="count" fill="#8884d8" />
+
+              </BarChart>
+
+            </ResponsiveContainer>
+
+          </div>
+
+
+          {/* MONTHLY APPOINTMENTS TREND CHART */}
+          <div className="analytics-chart-card">
+
+            <h3>Monthly Appointments Trend</h3>
+
+            <ResponsiveContainer width="100%" height={300}>
+
+              <LineChart
+                data={Object.entries(
+                  analytics?.monthly_appointments || {}
+                )
+                  .sort(([a], [b]) => a.localeCompare(b))
+                  .map(([month, count]) => ({
+                    month,
+                    count,
+                  }))}
+              >
+
+                <CartesianGrid strokeDasharray="3 3" />
+
+                <XAxis dataKey="month" />
+
+                <YAxis allowDecimals={false} />
+
+                <Tooltip />
+
+                <Line
+                  type="monotone"
+                  dataKey="count"
+                  stroke="#82ca9d"
+                  strokeWidth={2}
+                />
+
+              </LineChart>
+
+            </ResponsiveContainer>
+
+          </div>
 
       </div>
 
