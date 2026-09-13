@@ -832,3 +832,298 @@
   font-weight: 700;
   color: #101828;
 }
+
+/* =========================================================
+   HOSPIFY — MY BILLS / BILLING SECTION
+   ========================================================= */
+
+.bills-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.professional-bill-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px 30px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.professional-bill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 17px 40px rgba(30, 41, 59, 0.11);
+}
+
+.bill-top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.bill-patient-info {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-width: 0;
+}
+
+.bill-patient-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  font-size: 27px;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.10);
+}
+
+.bill-patient-info h3 {
+  margin: 0 0 7px;
+  color: #1b2945;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.patient-id-text,
+.bill-date-text {
+  margin: 3px 0;
+  color: #71809d;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.patient-id-text strong {
+  color: #475569;
+  font-weight: 700;
+}
+
+.bill-status-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.status-label,
+.amount-label {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+}
+
+.professional-paid-badge,
+.professional-unpaid-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.professional-paid-badge {
+  color: #16845b;
+  background: #e7f8f0;
+  border: 1px solid #c7eddd;
+}
+
+.professional-unpaid-badge {
+  color: #a16207;
+  background: #fff7df;
+  border: 1px solid #f4df9e;
+}
+
+.paid-check {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #24a778;
+  color: white;
+  font-size: 11px;
+}
+
+.professional-divider {
+  width: 100%;
+  height: 1px;
+  margin: 24px 0;
+  background: #edf0f5;
+}
+
+.bill-bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.bill-amount-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bill-amount-area strong {
+  color: #263653;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.professional-bill-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.professional-pay-button,
+.professional-download-button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.professional-pay-button {
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+}
+
+.professional-pay-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.25);
+}
+
+.professional-download-button {
+  border: 1px solid #dfe4f0;
+  background: #ffffff;
+  color: #475569;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.04);
+}
+
+.professional-download-button:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5ff;
+  background: #f7f8ff;
+  color: #4f46e5;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.09);
+}
+
+.download-icon {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.no-bills-card {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.no-bills-icon {
+  margin-bottom: 10px;
+  font-size: 38px;
+}
+
+.no-bills-card h3 {
+  margin: 0 0 7px;
+  color: #1b2945;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.no-bills-card p {
+  margin: 0;
+  color: #71809d;
+  font-size: 13px;
+}
+
+.bill-error {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 12px 16px;
+  border: 1px solid #f3c9ce;
+  border-radius: 10px;
+  background: #fff4f5;
+  color: #b42f40;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .professional-bill-card {
+    padding: 22px 20px;
+    border-radius: 20px;
+  }
+
+  .bill-top-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .bill-status-area {
+    align-items: flex-start;
+  }
+
+  .bill-bottom-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .professional-bill-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .professional-pay-button,
+  .professional-download-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .bill-patient-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 15px;
+    font-size: 23px;
+  }
+
+  .bill-patient-info h3 {
+    font-size: 18px;
+  }
+
+  .bill-amount-area strong {
+    font-size: 23px;
+  }
+}
+
