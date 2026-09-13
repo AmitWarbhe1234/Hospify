@@ -1,26 +1,34 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from "./pages/Login";
-import PatientDashboard from "./pages/PatientDashboard";
+import ActivateAccount from "./pages/ActivateAccount";
+
 import ProtectedRoute from "./components/ProtectedRoute";
+
+import PatientDashboard from "./pages/PatientDashboard";
 import AvailableDoctors from "./pages/AvailableDoctors";
 import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
+
 import ReceptionistDashboard from "./pages/ReceptionistDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import PatientRegistration from "./pages/PatientRegistration";
+
 import DoctorDashboard from "./pages/DoctorDashboard";
 import LabTechnicianDashboard from "./pages/LabTechnicianDashboard";
-import ActivateAccount from "./pages/ActivateAccount";
+
 import LabReports from "./pages/LabReports";
 import GenerateBill from "./pages/GenerateBill";
 import MyBills from "./pages/MyBills";
-import Chatbot from "./components/Chatbot";
+
 import FindPatient from "./pages/FindPatient";
 import PatientDetails from "./pages/PatientDetails";
+
+import Appointments from "./pages/Appointments";
+
+import Chatbot from "./components/Chatbot";
+
 import "./App.css";
-
-
-
 
 
 function App() {
@@ -29,10 +37,21 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Login />} />
-        <Route path="/activate" element={<ActivateAccount />} />
+        {/* ================= LOGIN ================= */}
 
- 
+        <Route
+          path="/"
+          element={<Login />}
+        />
+
+        <Route
+          path="/activate"
+          element={<ActivateAccount />}
+        />
+
+
+        {/* ================= PATIENT ================= */}
+
         <Route
           path="/patient-dashboard"
           element={
@@ -42,7 +61,33 @@ function App() {
           }
         />
 
-        
+        <Route
+          path="/available-doctors"
+          element={
+            <ProtectedRoute>
+              <AvailableDoctors />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/book-appointment"
+          element={
+            <ProtectedRoute>
+              <BookAppointment />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-appointments"
+          element={
+            <ProtectedRoute>
+              <MyAppointments />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/my-bills"
           element={
@@ -61,62 +106,48 @@ function App() {
           }
         />
 
-        <Route
-          path="/admin-dashboard"
-          element={<AdminDashboard />}
-        />
+
+        {/* ================= ADMIN ================= */}
 
         <Route
-          path="/available-doctors"
+          path="/admin-dashboard"
           element={
             <ProtectedRoute>
-              <AvailableDoctors />
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />
 
-        <Route
-        path="/my-appointments"
-        element={
-          <ProtectedRoute>
-            <MyAppointments />
-          </ProtectedRoute>
-        }
-        />
+
+        {/* ================= RECEPTIONIST ================= */}
 
         <Route
-          path="/book-appointment"
+          path="/receptionist-dashboard"
           element={
             <ProtectedRoute>
-              <BookAppointment />
+              <ReceptionistDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Receptionist Appointment Management */}
+
+        <Route
+          path="/receptionist-appointments"
+          element={
+            <ProtectedRoute>
+              <Appointments />
             </ProtectedRoute>
           }
         />
 
         <Route
           path="/patient-registration"
-          element={<PatientRegistration />}
-        />
-        
-
-        <Route
-          path="/doctor-dashboard"
           element={
             <ProtectedRoute>
-              <DoctorDashboard />
+              <PatientRegistration />
             </ProtectedRoute>
           }
-        />
-
-        
-        <Route
-          path="/receptionist-dashboard"
-          element={<ReceptionistDashboard />}
-        />
-       
-        <Route
-          path="/generate-bill"
-          element={<GenerateBill />}
         />
 
         <Route
@@ -137,6 +168,29 @@ function App() {
           }
         />
 
+        <Route
+          path="/generate-bill"
+          element={
+            <ProtectedRoute>
+              <GenerateBill />
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* ================= DOCTOR ================= */}
+
+        <Route
+          path="/doctor-dashboard"
+          element={
+            <ProtectedRoute>
+              <DoctorDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* ================= LAB TECHNICIAN ================= */}
 
         <Route
           path="/lab-technician-dashboard"
@@ -148,7 +202,12 @@ function App() {
         />
 
       </Routes>
-    <Chatbot />
+
+
+      {/* ================= CHATBOT ================= */}
+
+      <Chatbot />
+
     </BrowserRouter>
   );
 }

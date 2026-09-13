@@ -7,6 +7,7 @@ from .views import (
     UpdateAppointmentStatusAPIView,
     CancelAppointmentAPIView,
     AnalyticsAPIView,
+    ReceptionistAppointmentsAPIView,
 )
 
 
@@ -53,5 +54,9 @@ urlpatterns = [
         "analytics/",
         AnalyticsAPIView.as_view(),
         name="analytics"
+),
+    path(
+    "receptionist-appointments/",
+    ReceptionistAppointmentsAPIView.as_view(),
 ),
 ]

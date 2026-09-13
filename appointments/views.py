@@ -144,6 +144,34 @@ class DoctorAppointmentsAPIView(APIView):
         return Response(serializer.data)
 
 
+class ReceptionistAppointmentsAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+
+        # Check whether logged-in user is receptionist
+        if request.user.role != "RECEPTIONIST":
+            return Response(
+                {
+                    "detail": "Only receptionists can view appointments."
+                },
+                status=403
+            )
+
+        # Get all appointments
+        appointments = Appointment.objects.all().order_by(
+            "-appointment_date",
+            "-appointment_time"
+        )
+
+        serializer = AppointmentSerializer(
+            appointments,
+            many=True
+        )
+
+        return Response(serializer.data, status=200)
+
+
 class UpdateAppointmentStatusAPIView(APIView):
 
     permission_classes = [IsAuthenticated]

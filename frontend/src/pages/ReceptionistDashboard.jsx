@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
 function ReceptionistDashboard() {
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
-
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("user");
@@ -14,10 +12,9 @@ function ReceptionistDashboard() {
   };
 
   return (
-
     <div className="receptionist-page">
 
-      {/* Background Decorations */}
+      {/* ================= BACKGROUND DECORATIONS ================= */}
 
       <div className="receptionist-bg-circle receptionist-bg-one"></div>
       <div className="receptionist-bg-circle receptionist-bg-two"></div>
@@ -111,6 +108,8 @@ function ReceptionistDashboard() {
 
         <section className="receptionist-stats">
 
+          {/* Patient Management */}
+
           <div className="receptionist-stat-card">
 
             <div className="receptionist-stat-icon blue">
@@ -136,6 +135,8 @@ function ReceptionistDashboard() {
           </div>
 
 
+          {/* Patient Registration */}
+
           <div className="receptionist-stat-card">
 
             <div className="receptionist-stat-icon purple">
@@ -160,6 +161,8 @@ function ReceptionistDashboard() {
 
           </div>
 
+
+          {/* Reception Desk */}
 
           <div className="receptionist-stat-card">
 
@@ -217,7 +220,7 @@ function ReceptionistDashboard() {
 
             <div className="receptionist-action-grid">
 
-              {/* Registration */}
+              {/* ================= REGISTER PATIENT ================= */}
 
               <div className="receptionist-action-card">
 
@@ -247,7 +250,7 @@ function ReceptionistDashboard() {
               </div>
 
 
-              {/* Patient Search */}
+              {/* ================= FIND PATIENT ================= */}
 
               <div className="receptionist-action-card">
 
@@ -266,7 +269,9 @@ function ReceptionistDashboard() {
 
                 <button
                   className="receptionist-primary-button"
-                  onClick={() => navigate("/find-patient")}
+                  onClick={() =>
+                    navigate("/find-patient")
+                  }
                 >
                   Search Patient
                   <span>→</span>
@@ -275,10 +280,7 @@ function ReceptionistDashboard() {
               </div>
 
 
-
-
-
-                            {/* Generate Bill */}
+              {/* ================= GENERATE BILL ================= */}
 
               <div className="receptionist-action-card">
 
@@ -308,8 +310,7 @@ function ReceptionistDashboard() {
               </div>
 
 
-              
-              {/* Appointment */}
+              {/* ================= APPOINTMENT ================= */}
 
               <div className="receptionist-action-card">
 
@@ -328,11 +329,9 @@ function ReceptionistDashboard() {
 
                 <button
                   className="receptionist-secondary-button"
-                  onClick={() => {
-                    alert(
-                      "Appointment management will be added next."
-                    );
-                  }}
+                  onClick={() =>
+                    navigate("/receptionist-appointments")
+                  }
                 >
                   View Appointments
                   <span>→</span>
@@ -388,7 +387,6 @@ function ReceptionistDashboard() {
       </div>
 
     </div>
-
   );
 }
 
