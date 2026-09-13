@@ -7138,4 +7138,319 @@ code {
   justify-content: center;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.72);
-  font-size:
+  font-size: 36px;
+  box-shadow: 0 12px 35px rgba(76, 75, 180, 0.12);
+}
+
+/* QUICK STATS */
+
+.receptionist-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.receptionist-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(30, 41, 59, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.receptionist-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(30, 41, 59, 0.11);
+}
+
+.receptionist-stat-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 22px;
+}
+
+.receptionist-stat-icon.blue {
+  background: #e1edff;
+}
+
+.receptionist-stat-icon.purple {
+  background: #eee5ff;
+}
+
+.receptionist-stat-icon.green {
+  background: #def7ed;
+}
+
+.receptionist-stat-card span {
+  display: block;
+  color: #8a96ad;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.receptionist-stat-card strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #17233e;
+}
+
+.receptionist-stat-card small {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #9aa3b5;
+}
+
+/* MAIN CONTENT CARD */
+
+.receptionist-content {
+  margin-bottom: 30px;
+}
+
+.receptionist-card {
+  padding: 30px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(30, 41, 59, 0.07);
+}
+
+.receptionist-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.receptionist-section-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  color: #4f46e5;
+  font-size: 21px;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.10);
+}
+
+.receptionist-card-header h2 {
+  margin: 0 0 4px;
+  color: #1b2945;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.receptionist-card-header p {
+  margin: 0;
+  color: #8a96ad;
+  font-size: 12px;
+}
+
+/* ACTION GRID */
+
+.receptionist-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.receptionist-action-card {
+  padding: 26px;
+  border: 1px solid #edf1f8;
+  border-radius: 18px;
+  background: #f8faff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.receptionist-action-card:hover {
+  transform: translateY(-4px);
+  background: #f1f5ff;
+  box-shadow: 0 12px 30px rgba(30, 41, 59, 0.08);
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.registration-icon {
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
+}
+
+.search-icon {
+  background: linear-gradient(135deg, #ddf5ed, #c9f0da);
+}
+
+.appointment-icon {
+  background: linear-gradient(135deg, #fff4de, #ffe8c2);
+}
+
+.receptionist-action-card h3 {
+  margin: 0 0 8px;
+  color: #17233e;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.receptionist-action-card p {
+  margin: 0 0 20px;
+  color: #71809d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.receptionist-primary-button,
+.receptionist-secondary-button {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.receptionist-primary-button {
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}
+
+.receptionist-primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 28px rgba(79, 70, 229, 0.26);
+}
+
+.receptionist-secondary-button {
+  border: 1px solid #e4e9f2;
+  background: white;
+  color: #33415c;
+}
+
+.receptionist-secondary-button:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5ff;
+  background: #f7f8ff;
+  color: #4f46e5;
+}
+
+/* INFO BANNER */
+
+.receptionist-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 26px;
+  margin-bottom: 30px;
+  border-radius: 18px;
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.receptionist-info-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: white;
+  font-size: 20px;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.10);
+}
+
+.receptionist-info strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #17233e;
+  font-size: 14px;
+}
+
+.receptionist-info p {
+  margin: 0;
+  color: #71809d;
+  font-size: 13px;
+}
+
+/* FOOTER */
+
+.receptionist-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #8a96ad;
+  font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .receptionist-container {
+    padding: 0 25px 60px;
+  }
+
+  .receptionist-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .receptionist-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .receptionist-action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .receptionist-brand p {
+    display: none;
+  }
+
+  .receptionist-user-info {
+    display: none;
+  }
+
+  .receptionist-hero h1 {
+    font-size: 30px;
+  }
+
+  .receptionist-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+}
