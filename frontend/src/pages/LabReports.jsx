@@ -24,7 +24,7 @@ function LabReports() {
   }, []);
 
   return (
-    <div className="patient-page">
+    <div className="patient-page lab-reports-page">
 
       {/* Decorative Background */}
       <div className="patient-bg-circle patient-bg-one"></div>
@@ -32,10 +32,13 @@ function LabReports() {
       <div className="patient-bg-circle patient-bg-three"></div>
 
       {/* HEADER */}
-      <div className="patient-header">
-
+      <div
+        className="patient-header"
+        style={{ position: "relative", zIndex: 10 }}
+      >
         <div className="patient-brand">
           <div className="patient-logo">🏥</div>
+
           <div>
             <h2>Hospify</h2>
             <p>Healthcare Management System</p>
@@ -50,57 +53,68 @@ function LabReports() {
             ← Back to Dashboard
           </button>
         </div>
-
       </div>
 
+      {/* MAIN CONTENT */}
       <div className="patient-container">
 
-        {/* LAB REPORTS */}
-        <div className="patient-card">
+        <div className="patient-card lab-reports-card">
 
-          <div className="patient-card-header">
+          {/* REPORT HEADER */}
+          <div className="lab-reports-header">
 
-            <div className="patient-section-icon">🧪</div>
+            <div className="lab-title-section">
 
-            <div style={{ flex: 1 }}>
-              <h3>My Lab Reports</h3>
-              <p>Your laboratory test reports</p>
+              <div className="lab-report-icon">
+                🧪
+              </div>
+
+              <div>
+                <h1>My Lab Reports</h1>
+                <p>
+                  View your laboratory test reports and results
+                </p>
+              </div>
+
             </div>
 
-            <div
-              className="patient-active-badge"
-              style={{
-                background: "rgba(99,102,241,0.1)",
-                color: "#4338ca",
-                border: "1px solid rgba(99,102,241,0.15)",
-              }}
-            >
-              {labReports.length} Report
-              {labReports.length !== 1 ? "s" : ""}
+            <div className="lab-report-count">
+              {labReports.length}{" "}
+              {labReports.length === 1 ? "Report" : "Reports"}
             </div>
 
           </div>
 
-          {labLoading ? (
-
-            <div className="patient-loading">
+          {/* LOADING */}
+          {labLoading && (
+            <div className="patient-loading lab-loading">
               <div className="patient-spinner"></div>
               <p>Loading your reports...</p>
             </div>
+          )}
 
-          ) : labReports.length === 0 ? (
+          {/* EMPTY */}
+          {!labLoading && labReports.length === 0 && (
+            <div className="patient-empty lab-empty">
 
-            <div className="patient-empty">
-              <div>🧪</div>
+              <div className="lab-empty-icon">
+                🧪
+              </div>
+
               <h3>No Lab Reports</h3>
-              <p>You don't have any lab reports yet.</p>
+
+              <p>
+                You don't have any laboratory reports yet.
+              </p>
+
             </div>
+          )}
 
-          ) : (
+          {/* REPORTS */}
+          {!labLoading && labReports.length > 0 && (
+            <div className="lab-table-container">
 
-            <div className="patient-table-wrapper">
-
-              <table className="patient-table">
+              <table className="lab-reports-table">
 
                 <thead>
                   <tr>
@@ -115,27 +129,88 @@ function LabReports() {
                 <tbody>
                   {labReports.map((report) => (
                     <tr key={report.id}>
-                      <td style={{ fontWeight: 700 }}>
-                        {report.test_name}
-                      </td>
-                      <td>{report.doctor_name}</td>
-                      <td>{report.test_date}</td>
+
+                      {/* TEST NAME */}
                       <td>
+                        <div className="lab-test-name">
+
+                          <div className="lab-test-icon">
+                            🧪
+                          </div>
+
+                          <div>
+                            <strong>
+                              {report.test_name}
+                            </strong>
+
+                            <span>
+                              Laboratory Test
+                            </span>
+                          </div>
+
+                        </div>
+                      </td>
+
+                      {/* DOCTOR */}
+                      <td>
+                        <div className="lab-doctor">
+                          <span className="lab-cell-label">
+                            Doctor
+                          </span>
+
+                          <strong>
+                            {report.doctor_name || "—"}
+                          </strong>
+                        </div>
+                      </td>
+
+                      {/* DATE */}
+                      <td>
+                        <div className="lab-date">
+                          <span className="lab-cell-label">
+                            Test Date
+                          </span>
+
+                          <strong>
+                            {report.test_date}
+                          </strong>
+                        </div>
+                      </td>
+
+                      {/* STATUS */}
+                      <td>
+
                         {report.status === "COMPLETED" ? (
                           <span className="status-badge completed">
+                            <span className="status-dot"></span>
                             Completed
                           </span>
                         ) : (
                           <span className="status-badge pending">
+                            <span className="status-dot"></span>
                             Pending
                           </span>
                         )}
+
                       </td>
+
+                      {/* RESULT */}
                       <td>
-                        {report.status === "COMPLETED"
-                          ? report.result
-                          : "—"}
+                        <div className="lab-result">
+
+                          <span className="lab-cell-label">
+                            Result
+                          </span>
+
+                          <strong>
+                            {report.status === "COMPLETED"
+                              ? report.result || "No result"
+                              : "Awaiting result"}
+                          </strong>
+
+                        </div>
                       </td>
+
                     </tr>
                   ))}
                 </tbody>
@@ -143,13 +218,11 @@ function LabReports() {
               </table>
 
             </div>
-
           )}
 
         </div>
 
       </div>
-
     </div>
   );
 }

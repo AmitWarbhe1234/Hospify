@@ -1127,3 +1127,372 @@
   }
 }
 
+
+/* =========================================================
+   HOSPIFY — MY LAB REPORTS
+   PROFESSIONAL REPORT TABLE
+   Works with the current LabReports.jsx
+   ========================================================= */
+
+.lab-reports-page .lab-reports-card {
+  width: 100%;
+  padding: 30px 32px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(30, 41, 59, 0.08);
+}
+
+/* Header */
+.lab-reports-page .lab-reports-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.lab-reports-page .lab-title-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.lab-reports-page .lab-report-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  font-size: 23px;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.10);
+}
+
+.lab-reports-page .lab-title-section h1 {
+  margin: 0 0 5px;
+  color: #1b2945;
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.35px;
+}
+
+.lab-reports-page .lab-title-section p {
+  margin: 0;
+  color: #8a96ad;
+  font-size: 12px;
+}
+
+.lab-reports-page .lab-report-count {
+  flex-shrink: 0;
+  padding: 9px 15px;
+  border: 1px solid #d9ddff;
+  border-radius: 999px;
+  background: #f3f4ff;
+  color: #4f46c8;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Table area */
+.lab-reports-page .lab-table-container {
+  width: 100%;
+  margin-top: 22px;
+  overflow-x: auto;
+  border: 1px solid #e8ecf3;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+/* Table */
+.lab-reports-page .lab-reports-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  text-align: left;
+}
+
+/* Column widths */
+.lab-reports-page .lab-reports-table th:nth-child(1),
+.lab-reports-page .lab-reports-table td:nth-child(1) {
+  width: 25%;
+}
+
+.lab-reports-page .lab-reports-table th:nth-child(2),
+.lab-reports-page .lab-reports-table td:nth-child(2) {
+  width: 22%;
+}
+
+.lab-reports-page .lab-reports-table th:nth-child(3),
+.lab-reports-page .lab-reports-table td:nth-child(3) {
+  width: 17%;
+}
+
+.lab-reports-page .lab-reports-table th:nth-child(4),
+.lab-reports-page .lab-reports-table td:nth-child(4) {
+  width: 16%;
+}
+
+.lab-reports-page .lab-reports-table th:nth-child(5),
+.lab-reports-page .lab-reports-table td:nth-child(5) {
+  width: 20%;
+}
+
+/* Table heading */
+.lab-reports-page .lab-reports-table thead th {
+  padding: 14px 18px;
+  background: #f8faff;
+  border-bottom: 1px solid #e8ecf3;
+  color: #7b879c;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.lab-reports-page .lab-reports-table thead th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.lab-reports-page .lab-reports-table thead th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* Rows */
+.lab-reports-page .lab-reports-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.lab-reports-page .lab-reports-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.lab-reports-page .lab-reports-table tbody td {
+  padding: 18px;
+  border-bottom: 1px solid #edf0f5;
+  color: #46536d;
+  font-size: 13px;
+  line-height: 1.45;
+  vertical-align: middle;
+}
+
+.lab-reports-page .lab-reports-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Test name */
+.lab-reports-page .lab-test-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lab-reports-page .lab-test-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #eef2ff;
+  font-size: 18px;
+}
+
+.lab-reports-page .lab-test-name strong {
+  display: block;
+  color: #1d2a44;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.lab-reports-page .lab-test-name span {
+  display: block;
+  margin-top: 3px;
+  color: #9aa4b5;
+  font-size: 10px;
+}
+
+/* Doctor / date / result */
+.lab-reports-page .lab-doctor strong,
+.lab-reports-page .lab-date strong,
+.lab-reports-page .lab-result strong {
+  display: block;
+  color: #34415d;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.lab-reports-page .lab-cell-label {
+  display: none;
+}
+
+/* Result */
+.lab-reports-page .lab-result strong {
+  color: #1f7a5a;
+  font-weight: 750;
+}
+
+/* Status badges */
+.lab-reports-page .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.lab-reports-page .status-badge.completed {
+  color: #16845b;
+  background: #e7f8f0;
+  border: 1px solid #c7eddd;
+}
+
+.lab-reports-page .status-badge.pending {
+  color: #a16207;
+  background: #fff7df;
+  border: 1px solid #f4df9e;
+}
+
+.lab-reports-page .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Empty state */
+.lab-reports-page .lab-empty {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.lab-reports-page .lab-empty-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: #eef2ff;
+  font-size: 27px;
+}
+
+.lab-reports-page .lab-empty h3 {
+  margin: 0 0 6px;
+  color: #1b2945;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.lab-reports-page .lab-empty p {
+  margin: 0;
+  color: #8a96ad;
+  font-size: 12px;
+}
+
+/* Loading */
+.lab-reports-page .lab-loading {
+  min-height: 300px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .lab-reports-page .lab-reports-card {
+    padding: 25px 22px;
+  }
+
+  .lab-reports-page .lab-reports-table {
+    min-width: 780px;
+  }
+
+  .lab-reports-page .lab-reports-table th,
+  .lab-reports-page .lab-reports-table td {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .lab-reports-page .lab-reports-card {
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+
+  .lab-reports-page .lab-reports-header {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .lab-reports-page .lab-title-section {
+    align-items: flex-start;
+  }
+
+  .lab-reports-page .lab-report-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 20px;
+  }
+
+  .lab-reports-page .lab-title-section h1 {
+    font-size: 18px;
+  }
+
+  .lab-reports-page .lab-title-section p {
+    font-size: 11px;
+  }
+
+  .lab-reports-page .lab-report-count {
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  .lab-reports-page .lab-table-container {
+    margin-top: 17px;
+    border-radius: 13px;
+  }
+
+  .lab-reports-page .lab-reports-table {
+    min-width: 720px;
+  }
+
+  .lab-reports-page .lab-reports-table thead th {
+    padding: 12px;
+    font-size: 9px;
+  }
+
+  .lab-reports-page .lab-reports-table tbody td {
+    padding: 14px 12px;
+    font-size: 12px;
+  }
+
+  .lab-reports-page .lab-test-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
