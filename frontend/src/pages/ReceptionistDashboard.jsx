@@ -328,7 +328,7 @@ function ReceptionistDashboard() {
                 </p>
 
                 <button
-                  className="receptionist-secondary-button"
+                  className="receptionist-primary-button"
                   onClick={() =>
                     navigate("/receptionist-appointments")
                   }
