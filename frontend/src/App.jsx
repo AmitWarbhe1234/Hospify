@@ -55,7 +55,7 @@ function App() {
         <Route
           path="/patient-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <PatientDashboard />
             </ProtectedRoute>
           }
@@ -64,7 +64,7 @@ function App() {
         <Route
           path="/available-doctors"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <AvailableDoctors />
             </ProtectedRoute>
           }
@@ -73,7 +73,7 @@ function App() {
         <Route
           path="/book-appointment"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <BookAppointment />
             </ProtectedRoute>
           }
@@ -82,7 +82,7 @@ function App() {
         <Route
           path="/my-appointments"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <MyAppointments />
             </ProtectedRoute>
           }
@@ -91,7 +91,7 @@ function App() {
         <Route
           path="/my-bills"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <MyBills />
             </ProtectedRoute>
           }
@@ -100,7 +100,7 @@ function App() {
         <Route
           path="/lab-reports"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["PATIENT"]}>
               <LabReports />
             </ProtectedRoute>
           }
@@ -112,7 +112,7 @@ function App() {
         <Route
           path="/admin-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }
@@ -124,7 +124,7 @@ function App() {
         <Route
           path="/receptionist-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <ReceptionistDashboard />
             </ProtectedRoute>
           }
@@ -135,7 +135,7 @@ function App() {
         <Route
           path="/receptionist-appointments"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <Appointments />
             </ProtectedRoute>
           }
@@ -144,7 +144,7 @@ function App() {
         <Route
           path="/patient-registration"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <PatientRegistration />
             </ProtectedRoute>
           }
@@ -153,7 +153,7 @@ function App() {
         <Route
           path="/find-patient"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <FindPatient />
             </ProtectedRoute>
           }
@@ -162,7 +162,7 @@ function App() {
         <Route
           path="/patient/:patientId"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <PatientDetails />
             </ProtectedRoute>
           }
@@ -171,7 +171,7 @@ function App() {
         <Route
           path="/generate-bill"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["RECEPTIONIST"]}>
               <GenerateBill />
             </ProtectedRoute>
           }
@@ -183,7 +183,7 @@ function App() {
         <Route
           path="/doctor-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["DOCTOR"]}>
               <DoctorDashboard />
             </ProtectedRoute>
           }
@@ -195,7 +195,7 @@ function App() {
         <Route
           path="/lab-technician-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["LAB_TECHNICIAN"]}>
               <LabTechnicianDashboard />
             </ProtectedRoute>
           }

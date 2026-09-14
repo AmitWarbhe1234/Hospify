@@ -80,6 +80,59 @@ class BookAppointmentAPIView(APIView):
         )
 
 
+class ReceptionistBookAppointmentAPIView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+
+        # Sirf receptionist ye endpoint use kar sake
+        if request.user.role != "RECEPTIONIST":
+            return Response(
+                {
+                    "detail": "Only receptionists can book appointments here."
+                },
+                status=403
+            )
+
+        patient_id = request.data.get("patient_id")
+
+        if not patient_id:
+            return Response(
+                {
+                    "detail": "patient_id is required."
+                },
+                status=400
+            )
+
+        # Patient dhoondo jiske liye appointment book ho rahi hai
+        try:
+            patient = Patient.objects.get(patient_id=patient_id)
+        except Patient.DoesNotExist:
+            return Response(
+                {
+                    "detail": "Patient not found."
+                },
+                status=404
+            )
+
+        serializer = AppointmentSerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            appointment = serializer.save(patient=patient)
+
+            return Response(
+                {
+                    "message": "Appointment booked successfully.",
+                    "appointment": AppointmentSerializer(appointment).data
+                },
+                status=201
+            )
+
+        return Response(serializer.errors, status=400)
+
+
 class MyAppointmentsAPIView(APIView):
 
     permission_classes = [IsAuthenticated]

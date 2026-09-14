@@ -8,6 +8,7 @@ from .views import (
     CancelAppointmentAPIView,
     AnalyticsAPIView,
     ReceptionistAppointmentsAPIView,
+    ReceptionistBookAppointmentAPIView,
 )
 
 
@@ -24,7 +25,11 @@ urlpatterns = [
         BookAppointmentAPIView.as_view(),
         name="book-appointment"
     ),
-
+    path(
+        "receptionist-book/",
+        ReceptionistBookAppointmentAPIView.as_view(),
+        name="receptionist-book-appointment"
+),
     path(
         "my-appointments/",
         MyAppointmentsAPIView.as_view(),
@@ -56,7 +61,7 @@ urlpatterns = [
         name="analytics"
 ),
     path(
-    "receptionist-appointments/",
-    ReceptionistAppointmentsAPIView.as_view(),
-),
+        "receptionist-appointments/",
+        ReceptionistAppointmentsAPIView.as_view(),
+    ),
 ]
