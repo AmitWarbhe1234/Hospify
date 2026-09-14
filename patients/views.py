@@ -161,7 +161,7 @@ class PatientSearchView(APIView):
     """
     Find Patient feature.
     GET /api/patients/search/?q=<text>
-    Searches by patient_id, first name, last name, or email.
+    Searches by patient_id, first name, last name, email, or mobile.
     Only receptionists and admins can search patients.
     """
 
@@ -186,7 +186,8 @@ class PatientSearchView(APIView):
                 Q(patient_id__icontains=query) |
                 Q(user__first_name__icontains=query) |
                 Q(user__last_name__icontains=query) |
-                Q(user__email__icontains=query)
+                Q(user__email__icontains=query) |
+                Q(mobile__icontains=query)
             )
 
         patients = patients.order_by("-created_at")[:50]
